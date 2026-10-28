@@ -10,4 +10,8 @@ limpiarPantalla()
 intercambiar()
 
 numeroAleatorio()
- */
+*/
+
+
+#include "utilidades.h"
+#include "../constantes.h" 

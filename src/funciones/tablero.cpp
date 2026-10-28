@@ -15,3 +15,6 @@ buscarHueco()
 
 filaLlena() 
 */
+
+#include "tablero.h"
+#include "../constantes.h" 

@@ -9,3 +9,6 @@ actualizarMejorJugador()
 
 mostrarEstadisticas() 
 */
+
+#include "jugadores.h"
+#include "../constantes.h" 

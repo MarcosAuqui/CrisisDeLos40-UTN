@@ -10,4 +10,10 @@ mostrarReglas()
 mostrarTurno()
 
 mostrarMensajes() 
+
+mostrarCarta()
+
 */
+
+#include "interfaz.h"
+#include "../constantes.h" 
