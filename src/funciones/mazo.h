@@ -2,5 +2,6 @@
 #define MAZO_H
 
 void crearMazo(int mazo[], int& cantMazo);
+int robarCarta(int mazo[], int& cantMazo);
 
 #endif

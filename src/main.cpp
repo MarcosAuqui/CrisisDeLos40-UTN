@@ -9,20 +9,12 @@ int main() {
 
     crearMazo(mazo, cantMazo);
 
-    cout << cantMazo << endl;    
-    cout << mazo[0] << endl;     
-    cout << mazo[13] << endl;    
-    cout << mazo[53] << endl;    
+    int carta1 = robarCarta(mazo, cantMazo);
+    int carta2 = robarCarta(mazo, cantMazo);
 
-    for(int i = 0; i < cantMazo; i++){
-        cout << mazo[i] << endl;
-    }
-    
+    cout << carta1 << endl;      // esperado: 53
+    cout << carta2 << endl;      // esperado: 52
+    cout << cantMazo << endl;    // esperado: 52
+
     return 0;
 }
-
-
-
-//comandos para ejecutar
-// g++ src/main.cpp src/funciones/*.cpp -o src/main.exe
-// src\main.exe
