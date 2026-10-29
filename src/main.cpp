@@ -1,28 +1,28 @@
 #include <iostream>
 #include "constantes.h"
-#include "funciones/cartas.h"
-
+#include "funciones/mazo.h"
 using namespace std;
 
 int main() {
-    // valorCarta: esperado 1, 1, 13
-    cout << valorCarta(0) << endl;
-    cout << valorCarta(13) << endl;
-    cout << valorCarta(25) << endl;
+    int mazo[TOTAL_CARTAS];
+    int cantMazo = 0;
 
-    // paloCarta: esperado 0, 1, 3
-    cout << paloCarta(0) << endl;
-    cout << paloCarta(13) << endl;
-    cout << paloCarta(45) << endl;
+    crearMazo(mazo, cantMazo);
 
-    // esComodin: esperado 0, 1
-    cout << esComodin(51) << endl;
-    cout << esComodin(52) << endl;
+    cout << cantMazo << endl;    
+    cout << mazo[0] << endl;     
+    cout << mazo[13] << endl;    
+    cout << mazo[53] << endl;    
 
-    // esDiamante: esperado 0, 1, 0
-    cout << esDiamante(38) << endl;
-    cout << esDiamante(39) << endl;
-    cout << esDiamante(53) << endl;
-
+    for(int i = 0; i < cantMazo; i++){
+        cout << mazo[i] << endl;
+    }
+    
     return 0;
 }
+
+
+
+//comandos para ejecutar
+// g++ src/main.cpp src/funciones/*.cpp -o src/main.exe
+// src\main.exe
