@@ -11,7 +11,8 @@ devolverCarta()
 */
 
 #include "mazo.h"
-#include "../constantes.h" 
+#include "../constantes.h"
+#include <cstdlib>
 
 void crearMazo(int mazo[], int& cantMazo){
     for(int i = 0; i < TOTAL_CARTAS; i++){
@@ -46,3 +47,19 @@ inverso de robarCarta. la usa jugar al final de cada turno para devolver la cart
 que no se jugó y el comodín usado. Tamb la usan puntuarFila y las jugadas de diamente 
 y comodin cuando una carta sale del tablero. El mazo siempre se mezcla al terminar 
 el turno, asi que no importa en que posicion quede cada carta */
+
+void mezclar(int mazo[], int cantMazo){
+    for(int i = cantMazo - 1 ; i > 0; i--){
+        int j = rand() % (i + 1);
+        int aux = mazo[i];
+        mazo[i] = mazo[j];
+        mazo[j] = aux;
+    }
+
+}
+/*mezclar: desordena al azar las cartas que estan en el mazo. Desde la ultima 
+posicion hacia la segunda: cada paso elige una posicion alazar entre 0 e i 
+e intercambia esas dos cartas. solo toca posiciones 0 a cantMAzo - 1, o sea 
+las cartas que realmente estan en el mazo. Necesita que main llame
+a srand(time(NULL)) una sola vez al inicio del codido
+se usa despues de cad ajugada, al crear el mazo*/

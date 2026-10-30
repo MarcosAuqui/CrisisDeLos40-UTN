@@ -1,28 +1,40 @@
 #include <iostream>
+#include <cstdlib>
+#include <ctime>
 #include "constantes.h"
 #include "funciones/mazo.h"
 
 using namespace std;
 
 int main() {
+    srand(time(NULL));    // una sola vez, al principio del programa
+
     int mazo[TOTAL_CARTAS];
     int cantMazo = 0;
 
     crearMazo(mazo, cantMazo);
-
-    int carta1 = robarCarta(mazo, cantMazo);   // 53
-    int carta2 = robarCarta(mazo, cantMazo);  // 52
-    cout << "se robaron 2 cartas, cantidad de cartas en mazo: " << endl;   
-    cout << cantMazo << endl;                  // esperado: 52
+    cout << "mazo sin mezclar: " << endl;
     
-    devolverCarta(mazo, cantMazo, carta1);
-    cout << "se devolvio una carta al mazo, cantidad de cartas en mazo: " << endl;
-    cout << cantMazo << endl;                  // esperado: 53
+    for(int h = 0; h < cantMazo; h++){
+        cout << mazo[h] << endl;
+    }
+    mezclar(mazo, cantMazo);
 
-    int otraCarta = robarCarta(mazo, cantMazo);
-    cout << "se robaron 1 cartas, cantidad de cartas en mazo: " << endl;  
-    cout << otraCarta << endl;                  // esperado: 53
-    cout << cantMazo << endl;                  // esperado: 52
+    
+
+    // Mostrar el mazo mezclado
+    cout << "mazo mezclado: " << endl;
+    for (int i = 0; i < cantMazo; i++) {
+        cout << mazo[i] << endl;
+    }
+
+    //Controlar que no se perdió ninguna carta
+    int suma = 0;
+    for (int i = 0; i < cantMazo; i++) {
+        suma = suma + mazo[i];
+    }
+    cout << "Cantidad: " << cantMazo << endl;   // esperado: 54
+    cout << "Suma: " << suma << endl;           // esperado: 1431
 
     return 0;
 }
