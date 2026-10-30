@@ -33,4 +33,16 @@ Primero baja cantMazo en 1 (la última carta deja de ser parte del
 mazo) y después devuelve esa carta. El vector no se borra: lo que queda
 fuera de cantMazo simplemente no cuenta.
 En el proyecto la usa jugar al principio de cada turno, dos veces, para
-darle al jugador activo sus dos cartas. 
+darle al jugador activo sus dos cartas. */
+
+void devolverCarta(int mazo[], int& cantMazo, int carta){
+    mazo[cantMazo] = carta;
+    cantMazo++;
+}
+/* devolverCarta: pone una carta de vuelta en el mazo.
+La escribe en la primera posición libre (mazo[cantMazo]) y después sube
+cantMazo en 1, así esa posición pasa a ser parte del mazo. Hace lo
+inverso de robarCarta. la usa jugar al final de cada turno para devolver la carta
+que no se jugó y el comodín usado. Tamb la usan puntuarFila y las jugadas de diamente 
+y comodin cuando una carta sale del tablero. El mazo siempre se mezcla al terminar 
+el turno, asi que no importa en que posicion quede cada carta */
