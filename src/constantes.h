@@ -1,3 +1,6 @@
+#ifndef CONSTANTES_H
+#define CONSTANTES_H
+
 // Mazo
 const int TOTAL_CARTAS = 54;
 const int CARTAS_NORMALES = 52;   // ids 0 a 51
@@ -23,3 +26,5 @@ const int PUNTOS_VICTORIA = 50;
 const int PUNTOS_EXACTOS = 30;
 const int PENALIDAD_EXACTO = 15;
 const int LIMITE_CRISIS = 40;
+
+#endif
