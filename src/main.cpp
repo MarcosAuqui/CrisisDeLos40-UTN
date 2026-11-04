@@ -8,17 +8,19 @@ int main() {
     int tablero[FILAS][COLUMNAS];
 
     inicializarTablero(tablero);
-    cout << cartasEnFila(tablero, 0) << endl;    // esperado: 0
 
-    colocarCarta(tablero, 0, 0, 0);              // As de picas
-    colocarCarta(tablero, 0, 3, 25);
-    cout << cartasEnFila(tablero, 0) << endl;    // esperado: 2
-    cout << cartasEnFila(tablero, 1) << endl;    // esperado: 0
+    colocarCarta(tablero, 1, 3, 25);              // K de corazones
+    cout << tablero[1][3] << endl;                // esperado: 25
 
-    colocarCarta(tablero, 0, 1, 10);
-    colocarCarta(tablero, 0, 2, 11);
-    colocarCarta(tablero, 0, 4, 12);
-    cout << cartasEnFila(tablero, 0) << endl;    // esperado: 5
+    int sacada = quitarCarta(tablero, 1, 3);
+    cout << sacada << endl;                       // esperado: 25
+    cout << tablero[1][3] << endl;                // esperado: -1
+
+    // Prueba con el id 0 (As de picas)
+    colocarCarta(tablero, 0, 0, 0);
+    int otra = quitarCarta(tablero, 0, 0);
+    cout << otra << endl;                         // esperado: 0
+    cout << tablero[0][0] << endl;                // esperado: -1
     
     for (int f = 0; f < FILAS; f++) {
         for (int c = 0; c < COLUMNAS; c++) {
