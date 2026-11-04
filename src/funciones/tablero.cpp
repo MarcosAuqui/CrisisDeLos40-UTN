@@ -38,4 +38,20 @@ void colocarCarta(int tablero[FILAS][COLUMNAS], int fila, int columna, int carta
 /*colocarCarta: se encarga de colocar el id de X carta seleccionada en un casillero
 especifico de la matriz del tablero. fila va de 0 a 2(3) y columna de 0 a 4(5).
 se usaria en jugarComun y jugar diamante para poder poner la carta elegida,
- y en jugar comodin para ubicar la carta que se mueve*/
+y en jugar comodin para ubicar la carta que se mueve*/
+
+int cartasEnFila(int tablero[FILAS][COLUMNAS], int fila) {
+    int cantidad = 0;
+    for (int c = 0; c < COLUMNAS; c++) {
+        if (tablero[fila][c] != VACIO) {
+            cantidad = cantidad + 1;
+        }
+    }
+    return cantidad;
+}
+/*cartasEnFila: cuenta cuantos casilleros de x fila tiene una carta.
+recirre las 5 columnas de 1  fila x y suma 1 por cada que sea distinto
+de VACIO (-1)
+la van a usar filaLlena para saber si la fila se completo
+mostrarPantalla, para mostrar las cartas 
+y las jugadas que necesitan saber si una fila tiene lugar.*/
