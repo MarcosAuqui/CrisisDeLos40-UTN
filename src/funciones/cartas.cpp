@@ -81,10 +81,7 @@ void mostrarCarta(int id){
              break;
             case 13:
              cout << " K";
-             break;/* 
-            case 10: 
-             cout << "10";
-             break; */
+             break;
             default:
              cout << " " << valor;
              break;

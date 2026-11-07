@@ -80,3 +80,8 @@ int sumarFila(int tablero[FILAS][COLUMNAS], int fila){
     }
     return suma;
 }
+/*sumarFila: devuelve la suma de los valores
+de las cartas de toda una fila del tablero.
+recorre las  5 columnas y sui el casillero 
+no esta VACIO, le suma el valor de la carta.
+la usara puntuarFila()*/

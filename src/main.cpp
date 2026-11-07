@@ -6,7 +6,7 @@ using namespace std;
 
 int main() {
     for (int i = 0; i < TOTAL_CARTAS; i++) {
-        mostrarCarta(i);  // muestra cada carta del mazo en formato
+        mostrarCarta(i);  // muestra cada carta del mazo
         cout << " "; // da un espacio entre cada carta
 
         if ((i + 1) % CARTAS_POR_PALO == 0) {
@@ -15,6 +15,6 @@ int main() {
     }
 
     cout << endl;
-    mostrarCarta(VACIO); //muestra carta vacia
+    mostrarCarta(VACIO) ; //muestra carta vacia
     return 0;
 }
