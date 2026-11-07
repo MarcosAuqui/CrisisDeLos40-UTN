@@ -1,20 +1,21 @@
 #include <iostream>
 #include "constantes.h"
-#include "funciones/cartas.h"
+#include "funciones/tablero.h"
 
 using namespace std;
 
 int main() {
-    for (int i = 0; i < TOTAL_CARTAS; i++) {
-        mostrarCarta(i);  // muestra cada carta del mazo
-        cout << " "; // da un espacio entre cada carta
+    
+    int tablero[FILAS][COLUMNAS];
+    inicializarTablero(tablero);
 
-        if ((i + 1) % CARTAS_POR_PALO == 0) {
-            cout << endl;   // salta de linea cada 13
-        }
-    }
+    cout << sumarFila(tablero, 0) << endl;   // esperado: 0 (fila vacía)
 
-    cout << endl;
-    mostrarCarta(VACIO) ; //muestra carta vacia
+    colocarCarta(tablero, 0, 0, 0);         // As de picas = 1
+    colocarCarta(tablero, 0, 1, 6);         // 7 de picas = 7
+    colocarCarta(tablero, 0, 2, 25);        // K de corazones = 13
+    cout << sumarFila(tablero, 0) << endl;   // 21
+
+    cout << sumarFila(tablero, 1) << endl;   // 0 (otra fila, vacía)
     return 0;
 }
