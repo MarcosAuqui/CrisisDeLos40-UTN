@@ -14,6 +14,8 @@ mostrarCarta()
 
 #include "cartas.h"
 #include "../constantes.h" 
+#include "iostream"
+using namespace std;
 
 int valorCarta(int id) {
     return id % CARTAS_POR_PALO + 1;
@@ -55,3 +57,61 @@ bool esDiamante(int id){
 Usa paloCarta para obtener el palo y lo compara con DIAMANTES.
 En el proyecto la usa jugar para ofrecer al jugador las dos jugadas
 especiales del diamante (colocar o reemplazar una carta del tablero). */
+
+void mostrarCarta(int id){
+    if(id == VACIO){
+        cout << "[ ]";
+    }else if(esComodin(id)){
+        cout << "[COMODIN]";
+    }else{
+        int valor = valorCarta(id);
+        int palo = paloCarta(id);
+
+        cout << "[";
+
+        switch (valor) {
+            case 1: 
+             cout << " A";
+             break;
+            case 11:
+             cout << " J";
+             break;
+            case 12:
+             cout << " Q";
+             break;
+            case 13:
+             cout << " K";
+             break;/* 
+            case 10: 
+             cout << "10";
+             break; */
+            default:
+             cout << " " << valor;
+             break;
+        }
+
+        cout << " ";
+
+        switch (palo) {
+            case PICAS:
+             cout << "P";
+             break;
+            case CORAZONES:
+             cout << "C";
+             break;
+            case TREBOLES:
+             cout << "T";
+             break;
+            default:
+             cout << "D";
+             break;
+        }
+
+        cout << "]";
+    }
+}
+/*¨mostrarCarta: se encarga de imprimir las cartas
+formato [ valor palo*], asi sera cada carta impresa en consola
+si el di es VACIO imprime un casillero vacio [    ]
+si es comodin imprime [COMODIN]
+la usaran mostrar pantalla y jugar seguramente*/
