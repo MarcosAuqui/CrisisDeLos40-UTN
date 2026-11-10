@@ -85,3 +85,14 @@ de las cartas de toda una fila del tablero.
 recorre las  5 columnas y sui el casillero 
 no esta VACIO, le suma el valor de la carta.
 la usara puntuarFila()*/
+
+bool filaLlena(int tablero[FILAS][COLUMNAS], int fila){
+    if(cartasEnFila(tablero, fila) == COLUMNAS){
+        return true;
+    }else{
+        return false;
+    }    
+}
+/*filaLlena: esta funcion toma la matriz "tablero" y una fila de
+esta. Compara con cartasEnFila*/
+
