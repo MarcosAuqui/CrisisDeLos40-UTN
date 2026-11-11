@@ -22,6 +22,9 @@ mostrarCarta()
 #include <cstdlib>
 #include <windows.h>
 #include "interfaz.h"
+#include "cartas.h"
+#include "tablero.h"
+#include "../constantes.h"
  
 using namespace std;
 
@@ -145,3 +148,73 @@ void mostrarReglas()
 
 /*mostrarReglas: texto del reglamento dentro del marco verde.
 Se llama desde la opcion 3 del menu. Solo dibuja: la espera de la tecla la hace quien la llama. */
+
+void mostrarCarta(int id){
+    if(id == VACIO){
+        cout << "[    ]";
+    }else if(esComodin(id)){
+        cout << "[COMODIN]";
+    }else{
+        int valor = valorCarta(id);
+        int palo = paloCarta(id);
+
+        cout << "[";
+
+        switch (valor) {
+            case 1: 
+             cout << " A";
+             break;
+            case 11:
+             cout << " J";
+             break;
+            case 12:
+             cout << " Q";
+             break;
+            case 13:
+             cout << " K";
+             break;
+            default:
+             if(valor < 10){
+                 cout << " " << valor;
+             }else{
+                 cout << valor;
+             }
+             break;
+        }
+
+        cout << " ";
+
+        switch (palo) {
+            case PICAS:
+             cout << "P";
+             break;
+            case CORAZONES:
+             cout << "C";
+             break;
+            case TREBOLES:
+             cout << "T";
+             break;
+            default:
+             cout << "D";
+             break;
+        }
+
+        cout << "]";
+    }
+}
+/*mostrarCarta: se encarga de imprimir las cartas
+formato [valor palo], asi sera cada carta impresa en consola
+si el id es VACIO imprime un casillero vacio [    ]
+si es comodin imprime [COMODIN]
+la usaran mostrar pantalla y jugar seguramente*/
+
+void mostrarCasillerosLibres(int tablero[FILAS][COLUMNAS], int fila){
+    for(int c = 0; c < COLUMNAS; c++){
+        if(casilleroLibre(tablero, fila, c)){
+            cout << c + 1 << " ";
+        }
+    }
+    cout << endl;
+}
+/*mostrarCasillerosLibres: imprime los numeros (1 a 5) de los casilleros libres de la fila
+la usara pedirCasillero cuando el jugador tenga que elegir un casillero libre*/

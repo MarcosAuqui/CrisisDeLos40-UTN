@@ -8,14 +8,10 @@ paloCarta() da el palo 0 a 3
 esDiamante() 
 
 esComodin()
-
-mostrarCarta()
 */
 
 #include "cartas.h"
-#include "../constantes.h" 
-#include "iostream"
-using namespace std;
+#include "../constantes.h"
 
 int valorCarta(int id) {
     return id % CARTAS_POR_PALO + 1;
@@ -23,7 +19,7 @@ int valorCarta(int id) {
 /* valorCarta: recibe el id de una carta (0 a 51) y devuelve su valor (1 a 13).
 Como cada palo tiene 13 cartas seguidas, el valor se repite cada 13 ids:
 el resto de dividir por 13 da 0 a 12, y se le suma 1 (As=1 - K=13).
-En el proyecto la usan sumaFila (para sumar las filas), puntuarFila
+En el proyecto la usan sumarFila (para sumar las filas), puntuarFila
 y mostrarCarta (para imprimir el valor de la carta). */
 
 int paloCarta(int id) {
@@ -57,58 +53,3 @@ bool esDiamante(int id){
 Usa paloCarta para obtener el palo y lo compara con DIAMANTES.
 En el proyecto la usa jugar para ofrecer al jugador las dos jugadas
 especiales del diamante (colocar o reemplazar una carta del tablero). */
-
-void mostrarCarta(int id){
-    if(id == VACIO){
-        cout << "[    ]";
-    }else if(esComodin(id)){
-        cout << "[COMODIN]";
-    }else{
-        int valor = valorCarta(id);
-        int palo = paloCarta(id);
-
-        cout << "[";
-
-        switch (valor) {
-            case 1: 
-             cout << " A";
-             break;
-            case 11:
-             cout << " J";
-             break;
-            case 12:
-             cout << " Q";
-             break;
-            case 13:
-             cout << " K";
-             break;
-            default:
-             cout << " " << valor;
-             break;
-        }
-
-        cout << " ";
-
-        switch (palo) {
-            case PICAS:
-             cout << "P";
-             break;
-            case CORAZONES:
-             cout << "C";
-             break;
-            case TREBOLES:
-             cout << "T";
-             break;
-            default:
-             cout << "D";
-             break;
-        }
-
-        cout << "]";
-    }
-}
-/*¨mostrarCarta: se encarga de imprimir las cartas
-formato [ valor palo*], asi sera cada carta impresa en consola
-si el di es VACIO imprime un casillero vacio [    ]
-si es comodin imprime [COMODIN]
-la usaran mostrar pantalla y jugar seguramente*/

@@ -9,6 +9,6 @@ int cartasEnFila(int tablero[FILAS][COLUMNAS], int fila);
 int sumarFila(int tablero[FILAS][COLUMNAS], int fila);
 bool filaLlena(int tablero[FILAS][COLUMNAS], int fila);
 bool casilleroLibre(int tablero[FILAS][COLUMNAS], int fila, int columna);
-void mostrarCasillerosLibres(int tablero[FILAS][COLUMNAS], int fila);
+bool tableroVacio(int tablero[FILAS][COLUMNAS]);
 
 #endif

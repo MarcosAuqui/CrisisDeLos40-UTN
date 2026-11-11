@@ -20,10 +20,10 @@ void crearMazo(int mazo[], int& cantMazo){
     }
     cantMazo = TOTAL_CARTAS;
 }
-/* crearMazo: llena el vector con los id 0 a 53 en orden ( carta i queda
-en  posición i) y deja cantMazo en 54, o sea el mazo completo.
+/* crearMazo: llena el vector con los id 0 a 53 en orden (la carta i queda
+en la posición i) y deja cantMazo en 54, o sea el mazo completo.
 En el proyecto la usa jugar al empezar cada partida, para tener un mazo
-nuevo con todas las cartas antes de repart */
+nuevo con todas las cartas antes de repartir */
 
 int robarCarta(int mazo[], int& cantMazo){
     cantMazo--;
@@ -43,10 +43,10 @@ void devolverCarta(int mazo[], int& cantMazo, int carta){
 /* devolverCarta: pone una carta de vuelta en el mazo.
 La escribe en la primera posición libre (mazo[cantMazo]) y después sube
 cantMazo en 1, así esa posición pasa a ser parte del mazo. Hace lo
-inverso de robarCarta. la usa jugar al final de cada turno para devolver la carta
-que no se jugó y el comodín usado. Tamb la usan puntuarFila y las jugadas de diamente 
-y comodin cuando una carta sale del tablero. El mazo siempre se mezcla al terminar 
-el turno, asi que no importa en que posicion quede cada carta */
+inverso de robarCarta. La usa jugar al final de cada turno para devolver la carta
+que no se jugó y el comodín usado. También la usan puntuarFila y las jugadas de diamante 
+y comodín cuando una carta sale del tablero. El mazo siempre se mezcla al terminar 
+el turno, así que no importa en qué posición quede cada carta */
 
 void mezclar(int mazo[], int cantMazo){
     for(int i = cantMazo - 1 ; i > 0; i--){
@@ -57,9 +57,9 @@ void mezclar(int mazo[], int cantMazo){
     }
 
 }
-/*mezclar: desordena al azar las cartas que estan en el mazo. Desde la ultima 
-posicion hacia la segunda: cada paso elige una posicion alazar entre 0 e i 
-e intercambia esas dos cartas. solo toca posiciones 0 a cantMAzo - 1, o sea 
-las cartas que realmente estan en el mazo. Necesita que main llame
-a srand(time(NULL)) una sola vez al inicio del codido
-se usa despues de cad ajugada, al crear el mazo*/
+/*mezclar: desordena al azar las cartas que están en el mazo. Desde la última 
+posición hacia la segunda: en cada paso elige una posición al azar entre 0 e i 
+e intercambia esas dos cartas. Solo toca las posiciones 0 a cantMazo - 1, o sea 
+las cartas que realmente están en el mazo. Necesita que main llame
+a srand(time(NULL)) una sola vez al inicio del código.
+Se usa al crear el mazo y al final de cada turno (paso 6)*/
