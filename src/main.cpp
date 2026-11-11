@@ -1,67 +1,28 @@
-/* main.cpp TEMPORAL: sirve para probar las pantallas (menu, maqueta del tablero y reglas).
-No escribas letras en el menu hasta que tengamos pedirOpcion, una letra 
-deja el programa en bucle.*/
-
 #include <iostream>
-#include <string>
-#include <cstdlib>
-#include "funciones/interfaz.h"
+#include "constantes.h"
+#include "funciones/tablero.h"
 
 using namespace std;
 
-int main()
-{
-    configurarConsola();
+int main() {
+    int tablero[FILAS][COLUMNAS];
 
-    int opcion;
+    inicializarTablero(tablero);
+    cout << filaLlena(tablero, 0) << endl;     // 0 (vacía)
 
-    do
-    {
-        system("cls");
-        mostrarMenu();
-        cout << "Opción: ";
-        cin >> opcion;
+    colocarCarta(tablero, 0, 0, 0);            // As de picas referencia
+    colocarCarta(tablero, 0, 1, 10);
+    colocarCarta(tablero, 0, 3, 25);
+    colocarCarta(tablero, 0, 4, 12);
+    cout << filaLlena(tablero, 0) << endl;     // 0 (debe haber 4 cartas)
 
-        switch (opcion)
-        {
-            case 1:
-            {
-                // las llaves del case hacen falta porque se declaran variables adentro
-                string nombre1, nombre2;
+    colocarCarta(tablero, 0, 2, 11);
+    cout << filaLlena(tablero, 0) << endl;     // 1 (5 cartas)
 
-                system("cls");
-                cout << "Nombre del primer jugador: ";
-                cin >> nombre1;
-                cout << "Nombre del segundo jugador: ";
-                cin >> nombre2;
+    cout << filaLlena(tablero, 1) << endl;     // 0 (otra fila, vacía)
 
-                system("cls");
-                mostrarPantalla(nombre1, nombre2);
-                system("pause > nul");
-                break;
-            }
-
-            case 2:
-                cout << "Estadísticas: todavía no está hecho." << endl;
-                system("pause");
-                break;
-
-            case 3:
-                system("cls");
-                mostrarReglas();
-                system("pause > nul");
-                break;
-
-            case 0:
-                break;
-
-            default:
-                cout << "Opción inválida." << endl;
-                system("pause");
-                break;
-        }
-
-    } while (opcion != 0);
+    quitarCarta(tablero, 0, 2);
+    cout << filaLlena(tablero, 0) << endl;     // 0 (volvió a 4)
 
     return 0;
 }

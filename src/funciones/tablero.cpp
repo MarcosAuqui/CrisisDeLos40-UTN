@@ -94,5 +94,6 @@ bool filaLlena(int tablero[FILAS][COLUMNAS], int fila){
     }    
 }
 /*filaLlena: esta funcion toma la matriz "tablero" y una fila de
-esta. Compara con cartasEnFila*/
+esta. Compara con cartasEnFila() la cantidad de cartas en la fila
+si es 5, o sea fila llena, devuelve true, sino false*/
 
