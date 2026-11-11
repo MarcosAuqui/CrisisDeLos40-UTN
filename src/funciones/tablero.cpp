@@ -5,15 +5,17 @@ inicializarTablero()
 
 colocarCarta()
 
-quitarCarta())
+quitarCarta()
 
 cartasEnFila()
 
-sumaFila()
+sumarFila()
 
 filaLlena()
 
-primerVacioFila()
+casilleroLibre()
+
+mostrarCasillerosLibres()
 
 tableroVacio()
 */
@@ -21,6 +23,8 @@ tableroVacio()
 #include "tablero.h"
 #include "cartas.h"
 #include "../constantes.h" 
+#include <iostream>
+using namespace std;
 
 void inicializarTablero(int tablero[FILAS][COLUMNAS]) {
     for (int f = 0; f < FILAS; f++) {
@@ -97,3 +101,23 @@ bool filaLlena(int tablero[FILAS][COLUMNAS], int fila){
 esta. Compara con cartasEnFila() la cantidad de cartas en la fila
 si es 5, o sea fila llena, devuelve true, sino false*/
 
+bool casilleroLibre(int tablero[FILAS][COLUMNAS], int fila, int columna){
+    if(tablero[fila][columna] == VACIO){
+        return true;
+    }else{
+        return false;
+    }
+}
+/*casilleroLibre: devuelve booleano dependiendo si el casillero seleccionado esta libre en ese momento
+tendra uso en jugar()*/
+
+void mostrarCasillerosLibres(int tablero[FILAS][COLUMNAS], int fila){
+    for(int c = 0; c < COLUMNAS; c++){
+        if(tablero[fila][c] == VACIO){
+            cout << c+1 << " " ;
+        }
+    }
+    cout << endl;
+}
+/*mostrarCasillerosLibres: devuelve los espacios vacios en la fila
+tendra uso en jugar()*/

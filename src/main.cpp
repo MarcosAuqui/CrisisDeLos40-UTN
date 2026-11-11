@@ -1,28 +1,71 @@
 #include <iostream>
-#include "constantes.h"
 #include "funciones/tablero.h"
+#include "constantes.h"
 
 using namespace std;
 
-int main() {
+
+int main()
+{
     int tablero[FILAS][COLUMNAS];
 
+
+    // Inicializar todo vacío
     inicializarTablero(tablero);
-    cout << filaLlena(tablero, 0) << endl;     // 0 (vacía)
 
-    colocarCarta(tablero, 0, 0, 0);            // As de picas referencia
-    colocarCarta(tablero, 0, 1, 10);
-    colocarCarta(tablero, 0, 3, 25);
-    colocarCarta(tablero, 0, 4, 12);
-    cout << filaLlena(tablero, 0) << endl;     // 0 (debe haber 4 cartas)
 
-    colocarCarta(tablero, 0, 2, 11);
-    cout << filaLlena(tablero, 0) << endl;     // 1 (5 cartas)
+    // Simulamos cartas colocadas manualmente
+    // Fila 1:
+    tablero[0][0] = 7;   // carta cualquiera
+    tablero[0][3] = 12;
 
-    cout << filaLlena(tablero, 1) << endl;     // 0 (otra fila, vacía)
 
-    quitarCarta(tablero, 0, 2);
-    cout << filaLlena(tablero, 0) << endl;     // 0 (volvió a 4)
+    // Fila 2:
+    tablero[1][1] = 25;
+    tablero[1][2] = 40;
+    tablero[1][4] = 5;
+
+
+    // Fila 3:
+    tablero[2][0] = 18;
+
+
+    cout << "=== PRUEBA DE CASILLEROS LIBRES ===" << endl;
+
+
+    int fila;
+
+    cout << "Ingrese fila a consultar (1-3): ";
+    cin >> fila;
+
+    fila--; // pasamos a indice de matriz
+
+
+    cout << endl;
+
+    mostrarCasillerosLibres(tablero, fila);
+
+
+    cout << endl;
+
+
+    int columna;
+
+    cout << "Ingrese columna a comprobar (1-5): ";
+    cin >> columna;
+
+    columna--;
+
+
+    if(casilleroLibre(tablero, fila, columna))
+    {
+        cout << "El casillero esta libre." << endl;
+    }
+    else
+    {
+        cout << "El casillero esta ocupado." << endl;
+    }
+
 
     return 0;
 }

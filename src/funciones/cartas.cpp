@@ -60,7 +60,7 @@ especiales del diamante (colocar o reemplazar una carta del tablero). */
 
 void mostrarCarta(int id){
     if(id == VACIO){
-        cout << "[ ]";
+        cout << "[    ]";
     }else if(esComodin(id)){
         cout << "[COMODIN]";
     }else{
