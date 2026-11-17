@@ -5,16 +5,33 @@ configurarConsola() - -
 
 mostrarMenu() - - 
 
-mostrarPantalla() - -
-
 mostrarReglas() - - 
+
+mostrarCarta() - -
+
+lineaJugador() quiza vuele
 
 mostrarTurno()
 
+mostrarPantalla() - - se modifica todo, debe recibir tablero, nombres, puntajes,. jugador activo y cantMazo
+
+pedirFila()
+
+pedirColumna()
+
+pedirCartaTablero()
+
+pedirNombre()
+
+mostrarEstadisticas()
+
+mostrarFilaCompleta() se completo La fila
+
+mostrarTotalFila() cout de 30 exacto o crisis de los 40 o suma normal
+
+mostrarGanador()
+
 mostrarMensajes() 
-
-mostrarCarta()
-
 */
 
 #include <iostream>
@@ -207,14 +224,3 @@ formato [valor palo], asi sera cada carta impresa en consola
 si el id es VACIO imprime un casillero vacio [    ]
 si es comodin imprime [COMODIN]
 la usaran mostrar pantalla y jugar seguramente*/
-
-void mostrarCasillerosLibres(int tablero[FILAS][COLUMNAS], int fila){
-    for(int c = 0; c < COLUMNAS; c++){
-        if(casilleroLibre(tablero, fila, c)){
-            cout << c + 1 << " ";
-        }
-    }
-    cout << endl;
-}
-/*mostrarCasillerosLibres: imprime los numeros (1 a 5) de los casilleros libres de la fila
-la usara pedirCasillero cuando el jugador tenga que elegir un casillero libre*/

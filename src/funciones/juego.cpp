@@ -1,15 +1,15 @@
 /* 
 funciones a desarrollar
 
-jugar()
-
-turnoJugador()
-
 jugarComun()
 
 jugarDiamante()
 
 jugarComodin()
+
+jugarTurno()
+
+jugar()
 */
 
 #include "juego.h"

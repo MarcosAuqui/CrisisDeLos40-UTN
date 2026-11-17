@@ -11,9 +11,9 @@ cartasEnFila()
 
 sumarFila()
 
-filaLlena()
-
 casilleroLibre()
+
+primerCasilleroVacio
 
 tableroVacio()
 */
@@ -86,17 +86,6 @@ recorre las 5 columnas y si el casillero
 no esta VACIO, le suma el valor de la carta.
 la usaran puntuarFila y mostrarPantalla*/
 
-bool filaLlena(int tablero[FILAS][COLUMNAS], int fila){
-    if(cartasEnFila(tablero, fila) == COLUMNAS){
-        return true;
-    }else{
-        return false;
-    }    
-}
-/*filaLlena: esta funcion toma la matriz "tablero" y una fila de
-esta. Compara con cartasEnFila() la cantidad de cartas en la fila
-si es 5, o sea fila llena, devuelve true, sino false*/
-
 bool casilleroLibre(int tablero[FILAS][COLUMNAS], int fila, int columna){
     if(tablero[fila][columna] == VACIO){
         return true;
@@ -106,6 +95,19 @@ bool casilleroLibre(int tablero[FILAS][COLUMNAS], int fila, int columna){
 }
 /*casilleroLibre: devuelve booleano dependiendo si el casillero seleccionado esta libre en ese momento
 la usaran las jugadas (jugarComun, jugarDiamante, jugarComodin) para validar el casillero elegido*/
+
+int primerCasilleroVacio(int tablero[FILAS][COLUMNAS], int fila){
+    for(int c = 0; c < COLUMNAS; c++){
+        if(tablero[fila][c] == VACIO){
+            return c;
+        }
+    }
+    return -1;
+}
+/*primerCasilleroVacio: devuelve la pruimer columna libre de una fila, buscnado
+de izquierda a derecha.
+la usaran jugarComun y jugarDiamante para decidir donde ira la carta
+tambien jugarComodin para elegir el destino*/
 
 bool tableroVacio(int tablero[FILAS][COLUMNAS]){
     for(int f = 0; f < FILAS; f++){

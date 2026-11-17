@@ -1,13 +1,11 @@
 /*  
 funciones a desarrollar
 
-pedirNombres()
+sumarPuntos()
 
-mostrarJugadores()
+restarPuntos()
 
 actualizarMejorJugador()
-
-mostrarEstadisticas() 
 */
 
 #include "jugadores.h"

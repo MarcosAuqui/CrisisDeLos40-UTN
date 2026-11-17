@@ -9,7 +9,7 @@ limpiarPantalla()
 
 intercambiar()
 
-numeroAleatorio()
+numeroAleatorio() quizas no sea necesria
 */
 
 

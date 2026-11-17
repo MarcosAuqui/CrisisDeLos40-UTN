@@ -7,8 +7,8 @@ void colocarCarta(int tablero[FILAS][COLUMNAS], int fila, int columna, int carta
 int quitarCarta(int tablero[FILAS][COLUMNAS], int fila,  int columna);
 int cartasEnFila(int tablero[FILAS][COLUMNAS], int fila);
 int sumarFila(int tablero[FILAS][COLUMNAS], int fila);
-bool filaLlena(int tablero[FILAS][COLUMNAS], int fila);
 bool casilleroLibre(int tablero[FILAS][COLUMNAS], int fila, int columna);
+int primerCasilleroVacio(int tablero[FILAS][COLUMNAS], int fila);
 bool tableroVacio(int tablero[FILAS][COLUMNAS]);
 
 #endif
