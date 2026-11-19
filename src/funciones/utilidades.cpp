@@ -8,8 +8,6 @@ esperarTecla()
 limpiarPantalla()
 
 intercambiar()
-
-numeroAleatorio() quizas no sea necesria
 */
 
 #include <iostream>

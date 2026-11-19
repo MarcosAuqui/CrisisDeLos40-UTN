@@ -15,9 +15,9 @@ mostrarTurno()
 
 mostrarPantalla() - - se modifica todo, debe recibir tablero, nombres, puntajes,. jugador activo y cantMazo
 
-pedirFila()
+pedirFila() --
 
-pedirColumna()
+pedirColumna() -- 
 
 pedirCartaTablero()
 
@@ -41,6 +41,7 @@ mostrarMensajes()
 #include "interfaz.h"
 #include "cartas.h"
 #include "tablero.h"
+#include "utilidades.h"
 #include "../constantes.h"
  
 using namespace std;
@@ -224,3 +225,40 @@ formato [valor palo], asi sera cada carta impresa en consola
 si el id es VACIO imprime un casillero vacio [    ]
 si es comodin imprime [COMODIN]
 la usaran mostrar pantalla y jugar seguramente*/
+
+int pedirFila(){
+    cout << "Seleccione una Fila (1-3): ";
+    int fila = pedirOpcion(1, 3);
+    return fila - 1;
+}
+/*pedirFila: pide la fila al jugador (1 a 3) y la devuelve como indice (0 a 2).
+La usan jugarComun, jugarDiamante y jugarComodin cada vez que hay que elegir una fila del tablero.*/
+
+int pedirColumna(){
+    cout << "Seleccione un casilero (1 -5): ";
+    int columna = pedirOpcion(1, 5);
+    return columna - 1;
+}
+/*pedirColumna: pide el casillero al jugador (1 a 5) y lo devuelve como indice (0 a 4).
+Solo se usa para elegir una carta que ya esta puesta (reemplazar, intercambiar, retirar
+y el origen de mover), porque las cartas nuevas van al primer casillero vacio.*/
+
+void pedirCartaTablero(int tablero[FILAS][COLUMNAS], int& fila, int& columna){
+    bool vacio;
+    
+    do{
+        fila = pedirFila();
+        columna = pedirColumna();
+
+        vacio = casilleroLibre(tablero, fila, columna);
+
+        if(vacio){
+            cout << "Ese casillero esta vacio." << endl << "Elija una carta del tablero";
+        }
+    }while(vacio);
+
+}
+/*pedirCartaTablero: pide fila y casillero y repite hasta que el casillero 
+tenga una carta. Devuelve fila y columna como indices desde 0, por referencia.
+La usan jugarDiamante para reemplazar y jugarComodin para intercambiar, mover o retirar.
+IMPORTANTE: al ser llamada se debe comprobar antes que el tablero no este vacio (tableroVacio).*/
