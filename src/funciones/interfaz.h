@@ -12,6 +12,7 @@ int pedirFila();
 int pedirColumna();
 void pedirCartaTablero(int tablero[FILAS][COLUMNAS], int& fila, int& columna);
 void mostrarCarta(int id);//
-
+void mostrarFilaCompleta(int tablero[FILAS][COLUMNAS], int fila, int suma);
+void mostrarResultadoFila(std::string nombreJugador, std::string nombreRival, int suma);
 
 #endif

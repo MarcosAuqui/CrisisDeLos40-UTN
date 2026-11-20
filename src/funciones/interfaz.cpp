@@ -262,3 +262,33 @@ void pedirCartaTablero(int tablero[FILAS][COLUMNAS], int& fila, int& columna){
 tenga una carta. Devuelve fila y columna como indices desde 0, por referencia.
 La usan jugarDiamante para reemplazar y jugarComodin para intercambiar, mover o retirar.
 IMPORTANTE: al ser llamada se debe comprobar antes que el tablero no este vacio (tableroVacio).*/
+
+void mostrarFilaCompleta(int tablero[FILAS][COLUMNAS], int fila, int suma){
+    cout << "se completo la fila " << fila+1 << ": ";
+
+    for(int c = 0; c < COLUMNAS; c++){
+        mostrarCarta(tablero[fila][c]);
+        cout << " ";
+    }
+    cout << endl;
+    cout << "suma de la fila: " << suma << endl;
+
+}
+/*mostrarFilaCompleta: imprime las 5 cartas de la fila que se acaba de completar y su suma.
+Usa mostrarCarta para cada casillero. fila viene como indice(0 a 2) y se muestra 
+como 1 a 3. La usara completarFila antes de puntuar y vaciar la fila.*/
+
+void mostrarResultadoFila(string nombrejugador, string nombreRival, int suma){
+    if(suma == PUNTOS_EXACTOS){
+        cout << "30 exacto! " <<nombrejugador << "suma " << PUNTOS_EXACTOS << "puntos y " << nombreRival << "resta " << PENALIDAD_EXACTO << endl;
+    }else if(suma >  PUNTOS_EXACTOS && suma < LIMITE_CRISIS){
+        cout << nombrejugador << " suma " << suma << " puntos." << endl;
+    }else if(suma >= LIMITE_CRISIS){
+        cout << "CRISIS DE LOS 40! Los " << suma << "puntos son para " << nombreRival << endl;
+    }else{
+        cout << "la fila no llega a " << PUNTOS_EXACTOS << ": nadie suma puntos " << endl;
+    }
+}
+/*mostrarResultadoFila: imprime que paso con los puntos segun la suma (30 exacto, 31 a 39,
+crisis de los 40 o menos de 30). Solo imprime, los puntajes los cambia puntuarFila.
+La llama completarFila  despues de puntuar.*/
