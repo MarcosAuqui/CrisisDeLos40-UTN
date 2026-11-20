@@ -6,7 +6,8 @@
 using namespace std;
 
 int main(){
-    //puntuarFila
+    //puntuarFila 
+    cout << "== puntuarFila ==" << endl;
     int p[2] = {10, 10};
     puntuarFila(p, 0, 30);
     cout << p[0] << " " << p[1] << endl;  // 40 0
@@ -24,6 +25,7 @@ int main(){
     cout << s[0] << " " << s[1] << endl;  // 10 10
 
     //devolverFila
+    cout << "== devolverFila ==" << endl;
     int mazo[TOTAL_CARTAS];
     int cantMazo;
     int tablero[FILAS][COLUMNAS];
@@ -36,7 +38,17 @@ int main(){
     colocarCarta(tablero, 0, 0, robarCarta(mazo, cantMazo));
 
     cout << "Mazo antes: " << cantMazo << " | cartas en fila 2: " << cartasEnFila(tablero, 1) << endl;
+
     devolverFila(tablero, mazo, cantMazo, 1);
+    
     cout << "Mazo despues: " << cantMazo << " | fila 2: " << cartasEnFila(tablero, 1) << " | fila 1: " << cartasEnFila(tablero, 0) << endl;
+
+    //hayGanador
+    cout << "== hayGanador ==" << endl;
+    int a[2] = {49, 10};  cout << hayGanador(a) << endl; // -1
+    int b[2] = {50, 10};  cout << hayGanador(b) << endl; // 0
+    int c[2] = {10, 63};  cout << hayGanador(c) << endl; // 1
+    int d[2] = {0, 0};    cout << hayGanador(d) << endl; // -1
+
     return 0;
 }

@@ -42,3 +42,15 @@ void devolverFila(int tablero[FILAS][COLUMNAS], int mazo[], int& cantMazo, int f
 Recorre las 5 columnas y en cada casillero con una carta carta, quitarCarta la saca
 del tablero y devolverCarta la pone arriba del mazo. Se la llama despues de puntuarFila, cuando la
 fila ya se mostro y se repartieron los puntos.*/
+
+int hayGanador(int puntaje[2]){
+    if(puntaje[0] >= PUNTOS_VICTORIA){
+        return 0;
+    }else if(puntaje[1] >= PUNTOS_VICTORIA){
+        return 1;
+    }
+    return -1;
+}
+/*hayGanador: revisa si algun jugador llego a PUNTOS_VICTORIA (50) o mas. Devuelve su indice en vector
+(0 o 1) o -1 si todavia nadie gano. La usa jugar al final decada turno (paso 7): si devuelve 
+distinto de -1, la partida debera termina en ese momento.*/
