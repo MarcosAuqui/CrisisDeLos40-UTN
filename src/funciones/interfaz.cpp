@@ -300,3 +300,81 @@ void mostrarCartaColocada(string nombre, int carta, int fila){
 }
 /*mostrarCartaColocada: imprime "ANGEL coloca [ 2 D] en la fila 2." con el formato del enunciado.
 fila viene como indice (0 a 2) y se muestra de 1 a 3. La llama jugarComun despues de colocar la carta.*/
+
+string simboloPalo(int palo){
+    switch (palo) {
+        case PICAS:
+            return "♠";
+        case CORAZONES:
+            return "♥";
+        case TREBOLES:
+            return "♣";
+        default:
+            return "♦";
+    }
+}
+/*simboloPalo: traduce el numero de palo(0-3) al simbolo UTF-8 que se dibuja en la carta.
+la usara mostrarLineaCarta para dibujar las esquinas de la carta*/
+void mostrarValorCentro(int valor){
+    switch (valor) {
+        case 1:
+            cout << " A ";
+            break;
+        case 11:
+            cout << " J ";
+            break;
+        case 12:
+            cout << " Q ";
+            break;
+        case 13:
+            cout << " K ";
+            break;
+        default:
+            if (valor == 10) {
+                cout << "10 ";
+            } else {
+                cout << " " << valor << " ";
+            }
+            break;
+    }
+}
+/*mostrarValorCentro: imprime el valor de la carta en casos de A, J , Q, K
+La usara mostrarLineaCarta en la linea del medio de la carta*/
+
+void mostrarLineaCarta(int id, int linea){
+    if (linea == 0 || linea == 4) {
+        cout << "+---+";
+        return;
+    }
+
+    if (id == VACIO) {
+        cout << "|   |";
+        return;
+    }
+
+    if (esComodin(id)) {
+        if (linea == 1) {
+            cout << "|*  |";
+        } else if (linea == 2) {
+            cout << "|JOK|";
+        } else {
+            cout << "|  *|";
+        }
+        return;
+    }
+
+    string s = simboloPalo(paloCarta(id));
+
+    if (linea == 1) {
+        cout << "|" << s << "  |";
+    } else if (linea == 2) {
+        cout << "|";
+        mostrarValorCentro(valorCarta(id));
+        cout << "|";
+    } else {
+        cout << "|  " << s << "|";
+    }
+}
+/*mostrarLineaCarta: dibuja UNA sola linea (0 a 4) de la cajita de una carta. Como la consola
+imprime renglon por renglon, mostrarFilaTablero la va a llamar para cada carta de la fila
+una linea a la vez. Maneja carta comun, casillero vacio (VACIO) y comodin.*/
