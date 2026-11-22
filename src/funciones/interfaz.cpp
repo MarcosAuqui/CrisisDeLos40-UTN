@@ -378,3 +378,49 @@ void mostrarLineaCarta(int id, int linea){
 /*mostrarLineaCarta: dibuja UNA sola linea (0 a 4) de la cajita de una carta. Como la consola
 imprime renglon por renglon, mostrarFilaTablero la va a llamar para cada carta de la fila
 una linea a la vez. Maneja carta comun, casillero vacio (VACIO) y comodin.*/
+
+void espacios(int n){
+    for (int i = 0; i < n; i++) {
+        cout << " ";
+    }
+}
+/*espacios: imprime n espacios seguidos.
+La usa mostrarFilaTablero para rellenar el marco sin que se corra el borde derecho.*/
+
+void mostrarFilaTablero(int tablero[FILAS][COLUMNAS], int f){
+    for (int linea = 0; linea < 5; linea++) {
+        cout << "|";
+
+        if (linea == 2) {
+            espacios(33);
+            cout << "Fila " << f + 1 << "  ";
+        } else {
+            espacios(41);
+        }
+
+        for (int c = 0; c < COLUMNAS; c++) {
+            mostrarLineaCarta(tablero[f][c], linea);
+            if (c < COLUMNAS - 1) {
+                cout << "  ";
+            }
+        }
+
+        if (linea == 2) {
+            int suma = sumarFila(tablero, f);
+            cout << "  Cartas: " << cartasEnFila(tablero, f) << "/5  Suma: ";
+            if (suma < 10) {
+                cout << " ";
+            }
+            cout << suma;
+            espacios(19);
+        } else {
+            espacios(42);
+        }
+
+        cout << "|" << endl;
+    }
+}
+/*mostrarLineaCarta: dibuja las 5 cartas reales de la fila f, lionea por linea
+respeta el ancho del marco(41 espacios izquierda y 42 derecha). en linea del medio
+escribe el numero de fila, a la izq la cant de cartas y la suma a la derecha
+la llamara mostrarPantalla una vez por cada fila del trablero.*/

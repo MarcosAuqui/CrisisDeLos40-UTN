@@ -18,4 +18,6 @@ void mostrarCartaColocada(std::string nombre, int carta, int fila);
 std::string simboloPalo(int palo);
 void mostrarValorCentro(int valor);
 void mostrarLineaCarta(int id, int linea);
+void espacios(int n);
+void mostrarFilaTablero(int tablero[FILAS][COLUMNAS], int f);
 #endif
