@@ -253,7 +253,7 @@ void pedirCartaTablero(int tablero[FILAS][COLUMNAS], int& fila, int& columna){
         vacio = casilleroLibre(tablero, fila, columna);
 
         if(vacio){
-            cout << "Ese casillero esta vacio." << endl << "Elija una carta del tablero";
+            cout << "Ese casillero esta vacio. Elegi una carta del tablero." << endl;
         }
     }while(vacio);
 
@@ -264,31 +264,39 @@ La usan jugarDiamante para reemplazar y jugarComodin para intercambiar, mover o 
 IMPORTANTE: al ser llamada se debe comprobar antes que el tablero no este vacio (tableroVacio).*/
 
 void mostrarFilaCompleta(int tablero[FILAS][COLUMNAS], int fila, int suma){
-    cout << "se completo la fila " << fila+1 << ": ";
+    cout << "Se completo la fila " << fila+1 << ": ";
 
     for(int c = 0; c < COLUMNAS; c++){
         mostrarCarta(tablero[fila][c]);
         cout << " ";
     }
     cout << endl;
-    cout << "suma de la fila: " << suma << endl;
+    cout << "Suma de la fila: " << suma << endl;
 
 }
 /*mostrarFilaCompleta: imprime las 5 cartas de la fila que se acaba de completar y su suma.
 Usa mostrarCarta para cada casillero. fila viene como indice(0 a 2) y se muestra 
 como 1 a 3. La usara completarFila antes de puntuar y vaciar la fila.*/
 
-void mostrarResultadoFila(string nombrejugador, string nombreRival, int suma){
+void mostrarResultadoFila(string nombreJugador, string nombreRival, int suma){
     if(suma == PUNTOS_EXACTOS){
-        cout << "30 exacto! " <<nombrejugador << "suma " << PUNTOS_EXACTOS << "puntos y " << nombreRival << "resta " << PENALIDAD_EXACTO << endl;
+        cout << "30 EXACTO! " << nombreJugador << " suma " << PUNTOS_EXACTOS << " puntos y " << nombreRival << " resta " << PENALIDAD_EXACTO << "." << endl;
     }else if(suma >  PUNTOS_EXACTOS && suma < LIMITE_CRISIS){
-        cout << nombrejugador << " suma " << suma << " puntos." << endl;
+        cout << nombreJugador << " suma " << suma << " puntos." << endl;
     }else if(suma >= LIMITE_CRISIS){
-        cout << "CRISIS DE LOS 40! Los " << suma << "puntos son para " << nombreRival << endl;
+        cout << "CRISIS DE LOS 40! Los " << suma << " puntos son para " << nombreRival << "." << endl;
     }else{
-        cout << "la fila no llega a " << PUNTOS_EXACTOS << ": nadie suma puntos " << endl;
+        cout << "La fila no llega a " << PUNTOS_EXACTOS << ": nadie suma puntos." << endl;
     }
 }
 /*mostrarResultadoFila: imprime que paso con los puntos segun la suma (30 exacto, 31 a 39,
 crisis de los 40 o menos de 30). Solo imprime, los puntajes los cambia puntuarFila.
 La llama completarFila  despues de puntuar.*/
+
+void mostrarCartaColocada(string nombre, int carta, int fila){
+    cout << nombre << " coloca "; 
+    mostrarCarta(carta);
+    cout << " en la fila " << fila+1 << "." << endl;
+}
+/*mostrarCartaColocada: imprime "ANGEL coloca [ 2 D] en la fila 2." con el formato del enunciado.
+fila viene como indice (0 a 2) y se muestra de 1 a 3. La llama jugarComun despues de colocar la carta.*/

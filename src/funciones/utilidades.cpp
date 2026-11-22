@@ -11,8 +11,9 @@ intercambiar()
 */
 
 #include <iostream>
-using namespace std;
+#include <cstdlib>
 #include "utilidades.h"
+using namespace std;
 
 
 
@@ -21,7 +22,7 @@ int pedirOpcion(int min, int max){
     cin >> opcion;
 
     while(opcion < min || opcion > max){
-        cout << "opcion invalida. Ingrese un numero entre " << min << "y "<< max << ": ";
+        cout << "Opcion invalida. Ingrese un numero entre " << min << " y " << max << ": ";
         cin >> opcion;
     }
     return opcion;
@@ -43,8 +44,4 @@ void esperarTecla(){
 }
 /*esperarTecla: pausa hasta que el jugador apriete una tecla.
 "pause" de windows ya imprime "presione una tecla . . ."
-la usan todas las jugadas, las pantallas de rteglas y estadisticas*/
-
-
-#include "utilidades.h"
-#include "../constantes.h" 
+la usan todas las jugadas, las pantallas de reglas y estadisticas*/
