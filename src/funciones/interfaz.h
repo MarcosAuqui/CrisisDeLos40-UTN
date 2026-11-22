@@ -6,7 +6,7 @@
 
 void configurarConsola(); //
 void mostrarMenu();//
-void mostrarPantalla(std::string nombre1, std::string nombre2);   // MAQUETA por ahora
+void mostrarPantalla(int tablero[FILAS][COLUMNAS], std::string nombre[2], int puntaje[2], int jugador, int cantMazo);   // MAQUETA por ahora
 void mostrarReglas();//
 int pedirFila();
 int pedirColumna();
@@ -20,4 +20,5 @@ void mostrarValorCentro(int valor);
 void mostrarLineaCarta(int id, int linea);
 void espacios(int n);
 void mostrarFilaTablero(int tablero[FILAS][COLUMNAS], int f);
+
 #endif

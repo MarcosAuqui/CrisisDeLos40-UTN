@@ -1,4 +1,5 @@
 #include <iostream>
+#include <string>
 #include "constantes.h"
 #include "funciones/tablero.h"
 #include "funciones/interfaz.h"
@@ -21,9 +22,10 @@ int main(){
     colocarCarta(tablero, 1, 2, 0);
     colocarCarta(tablero, 1, 3, 51);
 
-    // fila 3: vacia
-    for(int f = 0; f < FILAS; f++){
-        mostrarFilaTablero(tablero, f);
-    }
+    string nombre[2] = {"ANGEL", "ABEL"};
+    int puntaje[2] = {18, 23};
+
+    mostrarPantalla(tablero, nombre, puntaje, 0, 46);   // le toca a ANGEL
+    mostrarPantalla(tablero, nombre, puntaje, 1, 46);   // le toca a ABEL
     return 0;
 }

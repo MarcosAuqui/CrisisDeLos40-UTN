@@ -89,51 +89,78 @@ void mostrarMenu()
 con pedirOpcion(). 
 Opciones segun enunciado: 1, 2, 3 y 0.*/
 
-void lineaJugador(string nombre)
+void lineaJugador(string nombre, int puntos, bool activo)
 {
     int largo = nombre.length();
- 
-    cout << "| " << nombre << ":";
-    for (int k = 0; k < 114 - largo; k++){
-        cout << " ";
+    int cifras = 1;
+
+    if (puntos >= 10) {
+        cifras = 2;
     }
+    if (puntos >= 100) {
+        cifras = 3;
+    }
+
+    cout << "| ";
+    if (activo) {
+        cout << "> ";
+    } else {
+        cout << "  ";
+    }
+    cout << nombre << ": " << puntos << " puntos";
+
+    espacios(104 - largo - cifras);
     cout << "|" << endl;
 }
-/*lineaJugador: dibuja la fila "| NOMBRE:      |" rellenando con espacios hasta el borde.
-nombre.length() es la cantidad de letras del nombre; asi el borde derecho no se corre*/
+/*lineaJugador: dibuja una linea del marco con "> NOMBRE: 18 puntos". El ">" marca al jugador que
+juega este turno. Calcula cuantos digitos tiene el puntaje para rellenar con espacios y que el
+borde derecho no se corra (el interior del marco mide 116 caracteres).
+La usa mostrarPantalla, una vez por cada jugador.*/
  
-void mostrarPantalla(string nombre1, string nombre2)
+void mostrarPantalla(int tablero[FILAS][COLUMNAS], string nombre[2], int puntaje[2], int jugador, int cantMazo)
 {
     cout << ". ------------------------------------------------------------------------------------------------------------------ ." << endl;
     cout << "|♥                                                 crisis de los 40                                                 ♠|" << endl;
-    cout << "| Puntuacion                                                                                                         |" << endl;
-    lineaJugador(nombre1);
-    lineaJugador(nombre2);
-    cout << "|                                                                                                                    |" << endl;
- 
-    // 3 filas de 5 cartas (maqueta: siempre las mismas)
-    for (int f = 0; f < 3; f++)
+
+    cout << "| Objetivo: " << PUNTOS_VICTORIA << " puntos";
+    espacios(74);
+    cout << "Cartas en el mazo: " << cantMazo << " |" << endl;
+
+    cout << "|";
+    espacios(116);
+    cout << "|" << endl;
+
+    for (int j = 0; j < 2; j++)
     {
-        cout << "|                                         +---+  +---+  +---+  +---+  +---+                                          |" << endl;
-        cout << "|                                         |♥  |  |♣  |  |♦  |  |♠  |  |j  |                                          |" << endl;
-        cout << "|                                         | 1 |  | 2 |  | 3 |  | 4 |  | ! |                                          |" << endl;
-        cout << "|                                         |  ♥|  |  ♣|  |  ♦|  |  ♠|  |  j|                                          |" << endl;
-        cout << "|                                         +---+  +---+  +---+  +---+  +---+                                          |" << endl;
+        bool activo = false;
+        if (j == jugador) {
+            activo = true;
+        }
+        lineaJugador(nombre[j], puntaje[j], activo);
     }
- 
-    // relleno hasta la linea de abajo
-    for (int i = 0; i < 6; i++)
+
+    cout << "|";
+    espacios(116);
+    cout << "|" << endl;
+
+    for (int f = 0; f < FILAS; f++)
     {
-        cout << "|                                                                                                                    |" << endl;
+        mostrarFilaTablero(tablero, f);
     }
- 
-    cout << "|♣                             (apriete cualquier tecla para volver al menú principal)                              ♦|" << endl;
+
+    cout << "|";
+    espacios(116);
+    cout << "|" << endl;
+
+    cout << "|♣";
+    espacios(114);
+    cout << "♦|" << endl;
     cout << ". ------------------------------------------------------------------------------------------------------------------ ." << endl;
 }
-/*mostrarPantalla: MAQUETA de la pantalla del tablero (diseño de Santiago).
-Todavia dibuja 15 cartas FIJAS y no muestra puntajes. Cuando definamos como
-pintar las cartas reales la parte de las cartas se reemplaza por un bucle sobre
-la matriz del tablero y esta funcion pasa a recibir tablero, puntajes, etc. */
+/*mostrarPantalla: dibuja la pantalla del turno: objetivo y cartas del mazo, puntaje de cada jugador
+(con ">" en el que juega) y el tablero con cantidad de cartas y suma de cada fila.
+Las 2 cartas robadas y las preguntas del turno se muestran debajo del marco, no aca.
+La usa jugarTurno al principio de cada turno.*/
  
 void mostrarReglas()
 {
