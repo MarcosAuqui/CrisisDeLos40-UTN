@@ -53,3 +53,29 @@ void jugarComun(int tablero[FILAS][COLUMNAS], int mazo[], int& cantMazo, int pun
 cae en el primer casillero vacio. Si con esa carta la fila llega a 5, aplica completarFila.
 No devuelve la carta no jugada ni mezcla, eso lo hace jugarTurno. La reutiliza jugarDiamante
 cuando el diamante se coloca en un casillero vacio.*/
+
+void jugarDiamante(int tablero[FILAS][COLUMNAS], int mazo[], int& cantMazo, int puntaje[2], string nombres[2], int jugador, int carta){
+    if(tableroVacio(tablero)){
+        jugarComun(tablero, mazo, cantMazo, puntaje, nombres, jugador, carta);
+        return;
+    }
+
+    int jugada = pedirJugarDiamante();
+
+    if(jugada == 1){
+        jugarComun(tablero, mazo, cantMazo, puntaje, nombres, jugador, carta);
+    }else{
+        int fila, columna;
+        pedirCartaTablero(tablero, fila, columna);
+
+        int cartaVieja = quitarCarta(tablero, fila, columna);
+        colocarCarta(tablero, fila, columna, carta);
+        devolverCarta(mazo, cantMazo, cartaVieja);
+
+        mostrarCartaReemplazada(nombres[jugador], cartaVieja, carta, fila);
+    }
+}
+/*jugarDiamante: juega una carta de diamantes, si el tableor esta vacio solo se puede
+colocar y no se pregunta sino el jugador elige entre colocar o reemplazar una del tablero.
+cartaVieja vuelve al mazo y el diamante ocupoa su lugar
+reemplazar nunca completa una fila asi que no se llama a completarFila*/

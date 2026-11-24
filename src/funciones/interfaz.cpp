@@ -497,3 +497,32 @@ int pedirCartaJugar(){
 /*pedirCartaJugar: pregunta cual de las 2 cartas robadas se usara en el turno
 y devuelve su indice, con este indice jugarTurno() va a elegir que carta usar
 */
+
+int pedirJugarDiamante(){
+    cout << "1 - Colocar en un casillero vacio" << endl;  
+    cout << "2 - Reemplazar una carta del tablero" << endl; 
+    cout << "Jugada del diamante: ";
+    return pedirOpcion(1,2);
+}
+/*pedirJugarDiamante: muestra las 2 jugadas posibles del diamante
+y devuelve la elegida, la usa JugarDiamante*/
+void mostrarCartaReemplazada(string nombre, int cartaVieja, int cartaNueva, int fila){
+    cout << nombre << " reemplaza una carta de la fila " << fila+1 << ":" << endl;
+
+    for (int linea = 0; linea < 5; linea++) {
+        espacios(2);
+        mostrarLineaCarta(cartaVieja, linea);
+
+        if (linea == 2) {
+            cout << "  --->  ";
+        } else {
+            espacios(8);
+        }
+
+        mostrarLineaCarta(cartaNueva, linea);
+        cout << endl;
+    }
+}
+/*mostrarCartaReemplazada: muestra la carta que sale del trablero y el diamante que entra
+la imprime renglon por renglon con mosstrarLineaCarta
+la usara jugarDiamante*/
