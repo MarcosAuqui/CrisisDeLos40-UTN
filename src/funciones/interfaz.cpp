@@ -471,3 +471,29 @@ void mostrarCartasRobadas(string nombre, int carta1, int carta2){
 /*mostrarCartasRobadas: muestra en consola las 2 cartas que el jugador activo
 tomo del mazo, una al lado de la otra. Las imprime linea por linea con
 mostrarLineaCarta()*/
+
+void pedirNombres(string nombres[2]){
+    for(int i = 0; i < 2; i++){
+        cout << "Ingrese nombre del jugador " << i+1 << " (maximo " << LARGO_MAX_NOMBRE << " letras) : ";
+        cin >> nombres[i];
+    
+        while(nombres[i].length() > LARGO_MAX_NOMBRE){
+            cout << "Nombre demasiado largo. Ingrese uno de hasta " << LARGO_MAX_NOMBRE << " letras: ";
+            cin >> nombres[i];
+        }
+    }
+
+}
+/*pedirNombres: pide el nombre de los 2 jugadores y los guarda en  nombnres[]
+se repite si el nombre pasa del largo maximo de nombres, que es 15, para no romper
+el formato del tablero.
+La Llamara jugar() al empezar partida*/
+
+int pedirCartaJugar(){
+    cout << "Carta a jugar (1 o 2): ";
+    int carta = pedirOpcion(1, 2);
+    return carta-1;
+}
+/*pedirCartaJugar: pregunta cual de las 2 cartas robadas se usara en el turno
+y devuelve su indice, con este indice jugarTurno() va a elegir que carta usar
+*/

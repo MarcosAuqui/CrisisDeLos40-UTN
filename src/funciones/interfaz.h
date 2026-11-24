@@ -21,5 +21,7 @@ void mostrarLineaCarta(int id, int linea);
 void espacios(int n);
 void mostrarFilaTablero(int tablero[FILAS][COLUMNAS], int f);
 void mostrarCartasRobadas(std::string nombre, int carta1, int carta2);
+void pedirNombres(std::string nombres[2]);
+int pedirCartaJugar();
 
 #endif

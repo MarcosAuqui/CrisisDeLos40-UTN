@@ -27,4 +27,7 @@ const int PUNTOS_EXACTOS = 30;
 const int PENALIDAD_EXACTO = 15;
 const int LIMITE_CRISIS = 40;
 
+// Interfaz
+const int LARGO_MAX_NOMBRE = 15;
+
 #endif
