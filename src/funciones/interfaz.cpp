@@ -451,3 +451,23 @@ void mostrarFilaTablero(int tablero[FILAS][COLUMNAS], int f){
 respeta el ancho del marco(41 espacios izquierda y 42 derecha). en linea del medio
 escribe el numero de fila, a la izq la cant de cartas y la suma a la derecha
 la llamara mostrarPantalla una vez por cada fila del trablero.*/
+
+void mostrarCartasRobadas(string nombre, int carta1, int carta2){
+    cout << "Turno de " << nombre << ". Cartas robadas del mazo: "<< endl;
+
+    espacios(4);
+    cout << "1";
+    espacios(7);
+    cout << "2" << endl;
+
+    for(int linea = 0; linea < 5; linea++){
+        espacios(2);
+        mostrarLineaCarta(carta1, linea);
+        espacios(3);
+        mostrarLineaCarta(carta2, linea);
+        cout << endl;
+    }
+}
+/*mostrarCartasRobadas: muestra en consola las 2 cartas que el jugador activo
+tomo del mazo, una al lado de la otra. Las imprime linea por linea con
+mostrarLineaCarta()*/
