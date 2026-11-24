@@ -92,3 +92,18 @@ void comodinRetirar(int tablero[FILAS][COLUMNAS], int mazo[], int& cantMazo, str
 
 /*comidinRetirar: jugada del comodin que saca una carta del tablero y devuelve
 al mazo, la va a llamar jugarComodin*/
+
+void comodinIntercambiar(int tablero[FILAS][COLUMNAS], string nombres[2], int jugador){
+    int fila1, columna1, fila2, columna2;
+    pedirDosCartasTablero(tablero, fila1, columna1, fila2, columna2);
+
+    int carta1 = quitarCarta(tablero, fila1, columna1);
+    int carta2 = quitarCarta(tablero, fila2, columna2);
+
+    colocarCarta(tablero, fila1, columna1, carta2);
+    colocarCarta(tablero, fila2, columna2, carta1);
+
+    mostrarIntercambio(nombres[jugador], carta1, fila1, carta2, fila2);
+}
+/*comidinIntercambiar: jugada dle comodin que cambia de lugar 2 cartas seleccionadas en tablero
+saca las 2 y pone una en casillero de la otra*/

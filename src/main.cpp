@@ -24,12 +24,8 @@ int main(){
     colocarCarta(tablero, 0, 1, 14);    // 2 C en fila 1
     colocarCarta(tablero, 1, 0, 22);    // 10 C en fila 2
 
-    cout << "-- Mensaje de reemplazo (A de treboles por K de diamantes)" << endl;
-    mostrarCartaReemplazada("ANGEL", 26, 51, 0);
-
-    cout << endl << "-- Comodin: retirar" << endl;
     mostrarPantalla(tablero, nombres, puntaje, 0, cantMazo);
-    comodinRetirar(tablero, mazo, cantMazo, nombres, 0);
+    comodinIntercambiar(tablero, nombres, 0);
     mostrarPantalla(tablero, nombres, puntaje, 0, cantMazo);
     return 0;
 }

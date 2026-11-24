@@ -533,3 +533,27 @@ void mostrarCartaRetirada(string nombre, int carta, int fila){
 }
 /*mostrarCartaRetirada: muestra la carta que se saco del tablero con el comodin
 fila viene como indice(0  a 2). La llama comodinRetirar*/
+
+void pedirDosCartasTablero(int tablero[FILAS][COLUMNAS], int& fila1, int& columna1, int& fila2, int& columna2){
+    cout << "Primera carta:" << endl;
+    pedirCartaTablero(tablero, fila1, columna1);
+
+    cout << "Segunda carta:" << endl;
+    pedirCartaTablero(tablero, fila2, columna2);
+
+    while(fila2 == fila1 && columna2 == columna1){
+        cout << "es la misma carta. Elegi otra." << endl;
+        pedirCartaTablero(tablero, fila2, columna2);
+    }
+}
+/*pedirDosCartasTablero: pide dos cartas del tablero y repite la segunda si es la misma que la primera.
+Devuelve las dos posiciones (indices desde 0) por referencia. La usa comodinIntercambiar.*/
+
+void mostrarIntercambio(string nombre, int carta1, int fila1, int carta2, int fila2){
+    cout << nombre << " usa comodin e intercambia la carta de la fila " << fila1+1 << ":" << endl;
+    dibujarCarta(carta1);
+    cout << "con la carta de la fila " << fila2+1 << ":" << endl;
+    dibujarCarta(carta2);
+}
+/*mostrarIntercambio: muestra las 2 cartas que se intercambiaron de lugar con el comodin,
+una debajo de la otra. La usa comodinIntercambiar*/
