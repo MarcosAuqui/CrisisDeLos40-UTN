@@ -25,4 +25,7 @@ void pedirNombres(std::string nombres[2]);
 int pedirCartaJugar();
 int pedirJugarDiamante();
 void mostrarCartaReemplazada(std::string nombre, int cartaVieja, int cartaNueva, int fila);
+void dibujarCarta(int id);
+void mostrarCartaRetirada(std::string nombnre, int carta, int fila);
+
 #endif

@@ -79,3 +79,16 @@ void jugarDiamante(int tablero[FILAS][COLUMNAS], int mazo[], int& cantMazo, int 
 colocar y no se pregunta sino el jugador elige entre colocar o reemplazar una del tablero.
 cartaVieja vuelve al mazo y el diamante ocupoa su lugar
 reemplazar nunca completa una fila asi que no se llama a completarFila*/
+
+void comodinRetirar(int tablero[FILAS][COLUMNAS], int mazo[], int& cantMazo, string nombres[2], int jugador){
+    int fila, columna;
+    pedirCartaTablero(tablero, fila, columna);
+
+    int carta = quitarCarta(tablero, fila, columna);
+    devolverCarta(mazo, cantMazo, carta);
+
+    mostrarCartaRetirada(nombres[jugador], carta, fila);
+}
+
+/*comidinRetirar: jugada del comodin que saca una carta del tablero y devuelve
+al mazo, la va a llamar jugarComodin*/

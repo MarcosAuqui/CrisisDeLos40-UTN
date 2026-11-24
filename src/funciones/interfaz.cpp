@@ -506,23 +506,30 @@ int pedirJugarDiamante(){
 }
 /*pedirJugarDiamante: muestra las 2 jugadas posibles del diamante
 y devuelve la elegida, la usa JugarDiamante*/
+
 void mostrarCartaReemplazada(string nombre, int cartaVieja, int cartaNueva, int fila){
     cout << nombre << " reemplaza una carta de la fila " << fila+1 << ":" << endl;
+    dibujarCarta(cartaVieja);
+    cout << "por:" << endl;
+    dibujarCarta(cartaNueva);
+}
+/*mostrarCartaReemplazada: muestra la carta que sale del tablero y debajo el diamante que entra.
+las dos dibujadas con dibujarCarta. fila viene como indice (0 a 2). La llama jugarDiamante.*/
 
-    for (int linea = 0; linea < 5; linea++) {
-        espacios(2);
-        mostrarLineaCarta(cartaVieja, linea);
-
-        if (linea == 2) {
-            cout << "  --->  ";
-        } else {
-            espacios(8);
-        }
-
-        mostrarLineaCarta(cartaNueva, linea);
+void dibujarCarta(int id){
+    for(int linea = 0; linea < 5; linea++){
+        mostrarLineaCarta(id, linea);
         cout << endl;
     }
 }
-/*mostrarCartaReemplazada: muestra la carta que sale del trablero y el diamante que entra
-la imprime renglon por renglon con mosstrarLineaCarta
-la usara jugarDiamante*/
+/*dibujarCarta: dibuja una carta sola completa en cajita, sus 5 renglones uno debajo del otro.
+Para cartas que van una al lado de la otra se usa mostrarLineaCarta renglon por renglon
+(como en mostrarFilaTablero), porque la consola no puede volver para arriba.
+La usan los mensajes de reemplazar, retirar, mover e intercambiar.*/
+
+void mostrarCartaRetirada(string nombre, int carta, int fila){
+    cout << nombre << " usa el comodin y retira una carta de la fila " << fila+1 << " (vuelve al mazo): " << endl;
+    dibujarCarta(carta);
+}
+/*mostrarCartaRetirada: muestra la carta que se saco del tablero con el comodin
+fila viene como indice(0  a 2). La llama comodinRetirar*/
