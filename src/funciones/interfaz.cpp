@@ -577,3 +577,19 @@ void mostrarMovimiento(string nombre, int carta, int filaOrigen, int filaDestino
 }
 /*mostrarMovimiento: muestra la carta que se movio con el comodin y de que fila a que fila fue,
 las filas vienen como indice (0 a 2). La usa comodinMover*/
+
+int pedirJugadaComodin(int cartasTablero){
+    cout << "1 - Intercambiar dos cartas" << endl;
+    cout << "2 - Mover una carta a otra fila" << endl;
+    cout << "3 - Retirar una carta (vuelve al mazo)" << endl;
+    cout << "Jugada del comodin: ";
+    int jugada = pedirOpcion(1,3);
+
+    while(jugada == 1 && cartasTablero < 2){
+        cout << "Para intercambiar hacen falta 2 cartas en el tablero. Elegi otra jugada: " << endl;
+        jugada = pedirOpcion(1, 3);
+    }
+    return jugada;
+}
+/*pedirJugadaComodin: muestra las 3 jugadas y devuelve la elegida (1,2,3)
+si hay menos de 2 cartas en tablero no deja elegir intercambiar, la usa jugarComodin*/

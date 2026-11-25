@@ -18,14 +18,12 @@ int main(){
 
     crearMazo(mazo, cantMazo);
     inicializarTablero(tablero);
-    cantMazo = cantMazo - 3;            // las 3 cartas que ponemos a mano salieron del mazo
+    cantMazo = cantMazo - 1;            // la carta que ponemos a mano salio del mazo
 
-    colocarCarta(tablero, 0, 0, 38);    // K T en fila 1
-    colocarCarta(tablero, 0, 1, 14);    // 2 C en fila 1
-    colocarCarta(tablero, 1, 0, 22);    // 10 C en fila 2
+    colocarCarta(tablero, 0, 0, 38);    // K T en fila 1, unica carta del tablero
 
     mostrarPantalla(tablero, nombres, puntaje, 0, cantMazo);
-    comodinIntercambiar(tablero, nombres, 0);
+    jugarComodin(tablero, mazo, cantMazo, puntaje, nombres, 0);
     mostrarPantalla(tablero, nombres, puntaje, 0, cantMazo);
     return 0;
 }

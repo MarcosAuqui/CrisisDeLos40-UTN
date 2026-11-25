@@ -11,5 +11,6 @@ void jugarDiamante(int tablero[FILAS][COLUMNAS], int mazo[], int& cantMazo, int 
 void comodinRetirar(int tablero[FILAS][COLUMNAS], int mazo[], int& cantMazo, std::string nombres[2], int jugador);
 void comodinIntercambiar(int tablero[FILAS][COLUMNAS], std::string nombres[2], int jugador);
 void comodinMover(int tablero[FILAS][COLUMNAS], int mazo[], int& cantMazo, int puntaje[2], std::string nombres[2], int jugador);
+void jugarComodin(int tablero[FILAS][COLUMNAS], int mazo[], int& cantMazo, int puntaje[2], std::string nombres[2], int jugador);
 
 #endif

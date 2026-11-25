@@ -128,3 +128,23 @@ void comodinMover(int tablero[FILAS][COLUMNAS], int mazo[], int& cantMazo, int p
 de otra fila. si con esa carta la fila destino llega a 5 se completa y puntua el que jugo el comodin
 (completarFila con el jugador del turno). la fila de origen pierde una carta asi que nunca se completa.
 la va a llamar jugarComodin*/
+
+void jugarComodin(int tablero[FILAS][COLUMNAS], int mazo[], int& cantMazo, int puntaje[2], string nombres[2], int jugador){
+    int total = 0;
+
+    for(int f = 0; f < FILAS; f++){
+        total += cartasEnFila(tablero, f);
+    }
+
+    int jugada = pedirJugadaComodin(total);
+
+    if(jugada == 1){
+        comodinIntercambiar(tablero, nombres, jugador);
+    }else if(jugada == 2){
+        comodinMover(tablero, mazo, cantMazo, puntaje, nombres, jugador);
+    }else{
+        comodinRetirar(tablero, mazo, cantMazo, nombres, jugador);
+    }
+}
+/*jugarComodin: cuenta las cartas del tablero, pregunta la jugada del comodin y
+llama a comodinINtercambiar, comodinMover o comodinRetirar. el tablero no puede estar vacio.*/

@@ -31,5 +31,6 @@ void pedirDosCartasTablero(int tablero[FILAS][COLUMNAS], int& fila1, int& column
 void mostrarIntercambio(std::string nombre, int carta1, int fila1, int carta2, int fila2);
 int pedirFilaDestino(int filaOrigen);
 void mostrarMovimiento(std::string nombre, int carta, int filaOrigen, int filaDestino);
+int pedirJugadaComodin(int cartasTablero);
 
 #endif
