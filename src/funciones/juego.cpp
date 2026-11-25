@@ -107,3 +107,24 @@ void comodinIntercambiar(int tablero[FILAS][COLUMNAS], string nombres[2], int ju
 }
 /*comidinIntercambiar: jugada dle comodin que cambia de lugar 2 cartas seleccionadas en tablero
 saca las 2 y pone una en casillero de la otra*/
+
+void comodinMover(int tablero[FILAS][COLUMNAS], int mazo[], int& cantMazo, int puntaje[2], string nombres[2], int jugador){
+    int filaOrigen, columnaOrigen;
+    pedirCartaTablero(tablero, filaOrigen, columnaOrigen);
+
+    int filaDestino = pedirFilaDestino(filaOrigen);
+
+    int carta = quitarCarta(tablero, filaOrigen, columnaOrigen);
+    int columnaDestino = primerCasilleroVacio(tablero, filaDestino);
+    colocarCarta(tablero, filaDestino, columnaDestino, carta);
+
+    mostrarMovimiento(nombres[jugador], carta, filaOrigen, filaDestino);
+
+    if(cartasEnFila(tablero, filaDestino) == COLUMNAS){
+        completarFila(tablero, mazo, cantMazo, puntaje, nombres, jugador, filaDestino);
+    }
+}
+/*comodinMover: jugada del comodin que lleva una carta del tablero al primer casillero vacio
+de otra fila. si con esa carta la fila destino llega a 5 se completa y puntua el que jugo el comodin
+(completarFila con el jugador del turno). la fila de origen pierde una carta asi que nunca se completa.
+la va a llamar jugarComodin*/

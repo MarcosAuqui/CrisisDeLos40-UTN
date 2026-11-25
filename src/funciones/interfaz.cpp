@@ -557,3 +557,23 @@ void mostrarIntercambio(string nombre, int carta1, int fila1, int carta2, int fi
 }
 /*mostrarIntercambio: muestra las 2 cartas que se intercambiaron de lugar con el comodin,
 una debajo de la otra. La usa comodinIntercambiar*/
+
+int pedirFilaDestino(int filaOrigen){
+    cout << "Fila destino:" << endl;
+    int fila = pedirFila();
+
+    while(fila == filaOrigen){
+        cout << "La carta ya esta en esa fila. Elegi otra fila." << endl;
+        fila = pedirFila();
+    }
+    return fila;
+}
+/*pedirFilaDestino: pide la fila a donde se mueve la carta con el comodin
+y la repite si es la misma fila donde ya esta. devuelve el indice (0 a 2). La usa comodinMover*/
+
+void mostrarMovimiento(string nombre, int carta, int filaOrigen, int filaDestino){
+    cout << nombre << " usa el comodin para mover de la fila " << filaOrigen+1 << " a la fila " << filaDestino+1 << ":" << endl;
+    dibujarCarta(carta);
+}
+/*mostrarMovimiento: muestra la carta que se movio con el comodin y de que fila a que fila fue,
+las filas vienen como indice (0 a 2). La usa comodinMover*/

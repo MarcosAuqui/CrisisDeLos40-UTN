@@ -28,5 +28,8 @@ void mostrarCartaReemplazada(std::string nombre, int cartaVieja, int cartaNueva,
 void dibujarCarta(int id);
 void mostrarCartaRetirada(std::string nombnre, int carta, int fila);
 void pedirDosCartasTablero(int tablero[FILAS][COLUMNAS], int& fila1, int& columna1, int& fila2, int& columna2);
-void mostrarIntercambio(std::string nombre, int carta1, int fila1, int carta2, int fila2);;
+void mostrarIntercambio(std::string nombre, int carta1, int fila1, int carta2, int fila2);
+int pedirFilaDestino(int filaOrigen);
+void mostrarMovimiento(std::string nombre, int carta, int filaOrigen, int filaDestino);
+
 #endif
