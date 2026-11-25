@@ -1,5 +1,5 @@
-/* 
-funciones a desarrollar
+/*
+funciones
 
 inicializarTablero()
 
@@ -13,7 +13,7 @@ sumarFila()
 
 casilleroLibre()
 
-primerCasilleroVacio
+primerCasilleroVacio()
 
 tableroVacio()
 */
@@ -22,6 +22,7 @@ tableroVacio()
 #include "cartas.h"
 #include "../constantes.h"
 
+// PREPARAR TABLERO
 void inicializarTablero(int tablero[FILAS][COLUMNAS]) {
     for (int f = 0; f < FILAS; f++) {
         for (int c = 0; c < COLUMNAS; c++) {
@@ -33,6 +34,7 @@ void inicializarTablero(int tablero[FILAS][COLUMNAS]) {
 usa dos for, el de afuera elige la fila y el de adentro recorre las columnas de esa fila.
 se usa al empezar cada partida para arrancar con el tablero limpio*/
 
+// PONER Y SACAR CARTAS
 void colocarCarta(int tablero[FILAS][COLUMNAS], int fila, int columna, int carta){
     tablero[fila][columna] = carta;
 }
@@ -53,6 +55,7 @@ La usan puntuarFila (para vaciar la fila)
 jugarDiamante (para sacar la carta reemplazada) 
 jugarComodin (para retirar o mover una carta)*/
 
+// CONSULTAS DEL TABLERO
 int cartasEnFila(int tablero[FILAS][COLUMNAS], int fila) {
     int cantidad = 0;
     for (int c = 0; c < COLUMNAS; c++) {

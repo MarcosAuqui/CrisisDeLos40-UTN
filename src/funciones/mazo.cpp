@@ -1,5 +1,5 @@
 /*
-Funciones a desarrollar
+funciones
 
 crearMazo()
 
@@ -14,6 +14,7 @@ devolverCarta()
 #include "../constantes.h"
 #include <cstdlib>
 
+// CREAR Y MEZCLAR
 void crearMazo(int mazo[], int& cantMazo){
     for(int i = 0; i < TOTAL_CARTAS; i++){
         mazo[i] = i;
@@ -25,6 +26,23 @@ en la posición i) y deja cantMazo en 54, o sea el mazo completo.
 En el proyecto la usa jugar al empezar cada partida, para tener un mazo
 nuevo con todas las cartas antes de repartir */
 
+void mezclar(int mazo[], int cantMazo){
+    for(int i = cantMazo - 1 ; i > 0; i--){
+        int j = rand() % (i + 1);
+        int aux = mazo[i];
+        mazo[i] = mazo[j];
+        mazo[j] = aux;
+    }
+
+}
+/*mezclar: desordena al azar las cartas que están en el mazo. Desde la última 
+posición hacia la segunda: en cada paso elige una posición al azar entre 0 e i 
+e intercambia esas dos cartas. Solo toca las posiciones 0 a cantMazo - 1, o sea 
+las cartas que realmente están en el mazo. Necesita que main llame
+a srand(time(NULL)) una sola vez al inicio del código.
+Se usa al crear el mazo y al final de cada turno (paso 6)*/
+
+// ROBAR Y DEVOLVER
 int robarCarta(int mazo[], int& cantMazo){
     cantMazo--;
     return  mazo[cantMazo];
@@ -47,19 +65,3 @@ inverso de robarCarta. La usa jugar al final de cada turno para devolver la cart
 que no se jugó y el comodín usado. También la usan puntuarFila y las jugadas de diamante 
 y comodín cuando una carta sale del tablero. El mazo siempre se mezcla al terminar 
 el turno, así que no importa en qué posición quede cada carta */
-
-void mezclar(int mazo[], int cantMazo){
-    for(int i = cantMazo - 1 ; i > 0; i--){
-        int j = rand() % (i + 1);
-        int aux = mazo[i];
-        mazo[i] = mazo[j];
-        mazo[j] = aux;
-    }
-
-}
-/*mezclar: desordena al azar las cartas que están en el mazo. Desde la última 
-posición hacia la segunda: en cada paso elige una posición al azar entre 0 e i 
-e intercambia esas dos cartas. Solo toca las posiciones 0 a cantMazo - 1, o sea 
-las cartas que realmente están en el mazo. Necesita que main llame
-a srand(time(NULL)) una sola vez al inicio del código.
-Se usa al crear el mazo y al final de cada turno (paso 6)*/

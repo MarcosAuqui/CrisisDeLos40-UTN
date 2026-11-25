@@ -1,13 +1,11 @@
-/* 
-funciones a desarrollar
+/*
+funciones
 
 pedirOpcion()
 
-esperarTecla()
-
 limpiarPantalla()
 
-intercambiar()
+esperarTecla()
 */
 
 #include <iostream>
@@ -15,8 +13,7 @@ intercambiar()
 #include "utilidades.h"
 using namespace std;
 
-
-
+// ENTRADA
 int pedirOpcion(int min, int max){
     int opcion;
     cin >> opcion;
@@ -33,6 +30,7 @@ jugarComodin, Fila, en todos estos casos pide una opcion en formato de entero.
 PROBLEMA: si se escribe una letra en vez de un numero, cin se traba
 y queda un bucle infinito. */
 
+// PANTALLA
 void limpiarPantalla(){
     system("cls");
 }

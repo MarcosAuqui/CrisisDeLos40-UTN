@@ -1,18 +1,19 @@
 /*
-funciones a desarrollar
+funciones
 
-valorCarta() da el valor de 1 al 13 (As=1 ... K=13)
+valorCarta()
 
-paloCarta() da el palo 0 a 3
-
-esDiamante() 
+paloCarta()
 
 esComodin()
+
+esDiamante()
 */
 
 #include "cartas.h"
 #include "../constantes.h"
 
+// VALOR Y PALO
 int valorCarta(int id) {
     return id % CARTAS_POR_PALO + 1;
 }
@@ -31,6 +32,7 @@ da 0 (picas), 1 (corazones), 2 (tréboles) o 3 (diamantes).
 En el proyecto la usan esDiamante (para saber si la carta tiene jugada
 especial) y mostrarCarta (para imprimir la inicial del palo). */
 
+// TIPO DE CARTA
 bool esComodin(int id){
     if( id >= PRIMER_COMODIN){
         return true;

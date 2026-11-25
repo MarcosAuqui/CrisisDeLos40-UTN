@@ -3,6 +3,7 @@
 
 #include <string>
 
+// ESTADISTICAS
 void actualizarMejorJugador(std::string nombres[2], int puntaje[2], std::string& mejorNombre, int& mejorPuntaje);
 
 #endif

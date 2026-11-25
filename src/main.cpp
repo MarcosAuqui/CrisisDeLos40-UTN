@@ -1,29 +1,38 @@
-#include <iostream>
 #include <string>
+#include <cstdlib>
+#include <ctime>
 #include "constantes.h"
-#include "funciones/mazo.h"
-#include "funciones/tablero.h"
+#include "funciones/utilidades.h"
 #include "funciones/interfaz.h"
 #include "funciones/juego.h"
 using namespace std;
 
 int main(){
+    srand(time(NULL));
     configurarConsola();
 
-    int mazo[TOTAL_CARTAS];
-    int cantMazo;
-    int tablero[FILAS][COLUMNAS];
-    int puntaje[2] = {0, 0};
-    string nombres[2] = {"ANGEL", "ABEL"};
+    string mejorNombre = "";
+    int mejorPuntaje = 0; //si es 0 todavia no se jugo ninguna partida
+    int opcion = -1;
 
-    crearMazo(mazo, cantMazo);
-    inicializarTablero(tablero);
-    cantMazo = cantMazo - 1;            // la carta que ponemos a mano salio del mazo
+    while(opcion != 0){
+        limpiarPantalla();
+        mostrarMenu();
+        opcion = pedirOpcion(0, 3);
 
-    colocarCarta(tablero, 0, 0, 38);    // K T en fila 1, unica carta del tablero
-
-    mostrarPantalla(tablero, nombres, puntaje, 0, cantMazo);
-    jugarComodin(tablero, mazo, cantMazo, puntaje, nombres, 0);
-    mostrarPantalla(tablero, nombres, puntaje, 0, cantMazo);
+        if(opcion == 1){
+            jugar(mejorNombre, mejorPuntaje);
+        }else if(opcion == 2){
+            limpiarPantalla();
+            mostrarEstadisticas(mejorNombre, mejorPuntaje);
+            esperarTecla();
+        }else if(opcion == 3){
+            limpiarPantalla();
+            mostrarReglas();
+            esperarTecla();
+        }
+    }
     return 0;
 }
+/*main: inicia el rand y la consola, guarda el mejor jugador (sin globales)
+y muestra el menu hasta que se elige 0. 1 juega, 2 estadisticas, 3 reglas*/

@@ -1,5 +1,5 @@
 /*
-funciones a desarrollar
+funciones
 
 actualizarMejorJugador()
 */
@@ -9,6 +9,7 @@ actualizarMejorJugador()
 #include "../constantes.h"
 using namespace std;
 
+// ESTADISTICAS
 void actualizarMejorJugador(string nombres[2], int puntaje[2], string& mejorNombre, int& mejorPuntaje){
     for(int i = 0; i < 2; i++){
         if(puntaje[i] > mejorPuntaje){
@@ -17,6 +18,5 @@ void actualizarMejorJugador(string nombres[2], int puntaje[2], string& mejorNomb
         }
     }
 }
-/*actualizarMejorJugador: compara el puntaje final de los 2 jugadores con el mejor puntaje guardado
-(mejorPuntaje). Si alguno lo supera, guarda su puntaje y su nombre.
-La llama jugar al terminar cada partida, y mostrarEstadisticas (interfaz) muestra el resultado.*/
+/*actualizarMejorJugador: compara el puntaje final de los 2 con el mejor guardado
+si alguno lo supera guarda su nombre y puntaje. la usa jugar al terminar la partida*/

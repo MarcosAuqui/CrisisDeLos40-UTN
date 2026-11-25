@@ -1,6 +1,9 @@
-/*funciones a desarrollar
+/*
+funciones
 
 puntuarFila()
+
+devolverFila()
 
 hayGanador()
 */
@@ -9,6 +12,7 @@ hayGanador()
 #include "mazo.h"
 #include "../constantes.h"
 
+// FILA COMPLETA
 void puntuarFila(int puntaje[2], int jugador, int suma){
     int rival = 1 - jugador; // declara el rival del jugador
 
@@ -43,6 +47,7 @@ Recorre las 5 columnas y en cada casillero con una carta carta, quitarCarta la s
 del tablero y devolverCarta la pone arriba del mazo. Se la llama despues de puntuarFila, cuando la
 fila ya se mostro y se repartieron los puntos.*/
 
+// VICTORIA
 int hayGanador(int puntaje[2]){
     if(puntaje[0] >= PUNTOS_VICTORIA){
         return 0;
