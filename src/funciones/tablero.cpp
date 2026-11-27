@@ -30,30 +30,23 @@ void inicializarTablero(int tablero[FILAS][COLUMNAS]) {
         }
     }
 }
-/*inicializarTablero: deja los 15 casilleros del tablero en VACIO(-1).
-usa dos for, el de afuera elige la fila y el de adentro recorre las columnas de esa fila.
-se usa al empezar cada partida para arrancar con el tablero limpio*/
+/*inicializarTablero: deja los 15 casilleros en VACIO (-1) con 2 for, uno por fila y otro por columna
+la usa jugar al empezar la partida*/
 
 // PONER Y SACAR CARTAS
 void colocarCarta(int tablero[FILAS][COLUMNAS], int fila, int columna, int carta){
     tablero[fila][columna] = carta;
 }
-/*colocarCarta: se encarga de colocar el id de X carta seleccionada en un casillero
-especifico de la matriz del tablero. fila va de 0 a 2(3) y columna de 0 a 4(5).
-se usaria en jugarComun y jugarDiamante para poder poner la carta elegida,
-y en jugarComodin para ubicar la carta que se mueve*/
+/*colocarCarta: pone el id de una carta en el casillero (fila, columna) del tablero
+la usan jugarComun, jugarDiamante y los comodines*/
 
 int quitarCarta(int tablero[FILAS][COLUMNAS], int fila,  int columna){
     int carta = tablero[fila][columna];
     tablero[fila][columna] = VACIO;
     return carta;
 }
-/*quitarCarta: esta funcion devuelve el id de una carta seleccionada.
-busca en el tablero[][] y guarda el id de esa posicion en la var carta
-luego deja esa posicion en VACIO
-La usan puntuarFila (para vaciar la fila)
-jugarDiamante (para sacar la carta reemplazada) 
-jugarComodin (para retirar o mover una carta)*/
+/*quitarCarta: guarda la carta de un casillero, lo deja en VACIO y devuelve la carta
+la usan devolverFila, jugarDiamante (reemplazar) y los comodines*/
 
 // CONSULTAS DEL TABLERO
 int cartasEnFila(int tablero[FILAS][COLUMNAS], int fila) {
@@ -65,14 +58,8 @@ int cartasEnFila(int tablero[FILAS][COLUMNAS], int fila) {
     }
     return cantidad;
 }
-
-/*cartasEnFila: cuenta cuántas cartas hay en una fila del tablero.
-Recorre las 5 columnas de esa fila con un for y suma 1 cada vez que
-el casillero no está VACIO. Devuelve la cantidad (0 a 5).
-No modifica el tablero.
-La usan jugar y las jugadas con comodín para saber si una fila quedó
-completa (cantidad == 5), y mostrarPantalla para mostrar "Cartas: 3/5". 
-*/
+/*cartasEnFila: cuenta cuantas cartas hay en una fila (0 a 5)
+la usan las jugadas para saber si la fila se completo y la pantalla para mostrar Cartas: x/5*/
 
 int sumarFila(int tablero[FILAS][COLUMNAS], int fila){
     int suma= 0;
@@ -83,11 +70,8 @@ int sumarFila(int tablero[FILAS][COLUMNAS], int fila){
     }
     return suma;
 }
-/*sumarFila: devuelve la suma de los valores
-de las cartas de toda una fila del tablero.
-recorre las 5 columnas y si el casillero 
-no esta VACIO, le suma el valor de la carta.
-la usaran puntuarFila y mostrarPantalla*/
+/*sumarFila: suma los valores de las cartas de una fila, salteando los casilleros vacios
+la usan completarFila y la pantalla*/
 
 bool casilleroLibre(int tablero[FILAS][COLUMNAS], int fila, int columna){
     if(tablero[fila][columna] == VACIO){
@@ -96,8 +80,8 @@ bool casilleroLibre(int tablero[FILAS][COLUMNAS], int fila, int columna){
         return false;
     }
 }
-/*casilleroLibre: devuelve booleano dependiendo si el casillero seleccionado esta libre en ese momento
-la usaran las jugadas (jugarComun, jugarDiamante, jugarComodin) para validar el casillero elegido*/
+/*casilleroLibre: devuelve true si el casillero esta vacio
+la usan pedirCartaTablero y devolverFila*/
 
 int primerCasilleroVacio(int tablero[FILAS][COLUMNAS], int fila){
     for(int c = 0; c < COLUMNAS; c++){
@@ -107,10 +91,8 @@ int primerCasilleroVacio(int tablero[FILAS][COLUMNAS], int fila){
     }
     return -1;
 }
-/*primerCasilleroVacio: devuelve la pruimer columna libre de una fila, buscnado
-de izquierda a derecha.
-la usaran jugarComun y jugarDiamante para decidir donde ira la carta
-tambien jugarComodin para elegir el destino*/
+/*primerCasilleroVacio: devuelve la primera columna libre de la fila, buscando de izquierda a derecha
+la usan jugarComun y comodinMover para saber donde cae la carta*/
 
 bool tableroVacio(int tablero[FILAS][COLUMNAS]){
     for(int f = 0; f < FILAS; f++){
@@ -120,8 +102,5 @@ bool tableroVacio(int tablero[FILAS][COLUMNAS]){
     }
     return true;
 }
-/*tableroVacio: devuelve true si no hay ninguna carta en todo el tablero.
-recorre las 3 filas y usa cartasEnFila() para saber si cada una tiene cartas.
-si encuentra una fila con al menos una carta devuelve false, sin seguir mirando.
-la usara el turno: si el jugador roba los dos comodines y el tablero esta vacio, pierde el turno;
-y las jugadas para no permitir usar un comodin con el tablero vacio*/
+/*tableroVacio: devuelve true si no hay ninguna carta en el tablero, usa cartasEnFila
+la usan jugarTurno (comodines con tablero vacio) y jugarDiamante*/

@@ -24,22 +24,19 @@ int pedirOpcion(int min, int max){
     }
     return opcion;
 }
-/*pedirOpcion: lee el entero de opcion y repite hasta que este entre min y max
-devuelve ese numero. La usaran menu principal, cartaAJugar, jugarDiamante,
-jugarComodin, Fila, en todos estos casos pide una opcion en formato de entero. 
-PROBLEMA: si se escribe una letra en vez de un numero, cin se traba
-y queda un bucle infinito. */
+/*pedirOpcion: lee un numero y lo vuelve a pedir hasta que este entre min y max
+lo usan el menu y todas las preguntas del juego
+ojo: si se escribe una letra cin se traba y queda un bucle infinito*/
 
 // PANTALLA
 void limpiarPantalla(){
     system("cls");
 }
-/*limpiarPantalla: borra la consola con el comando "cls" de Windows.
-La usan mostrarPantalla y el menu antes de redibujar asi no se acumule texto viejo.*/
+/*limpiarPantalla: borra la consola con system("cls") de windows
+la usan main y jugarTurno antes de dibujar*/
 
 void esperarTecla(){
     system("pause");
 }
-/*esperarTecla: pausa hasta que el jugador apriete una tecla.
-"pause" de windows ya imprime "presione una tecla . . ."
-la usan todas las jugadas, las pantallas de reglas y estadisticas*/
+/*esperarTecla: pausa hasta que se apriete una tecla con system("pause"), que ya imprime el mensaje
+la usan main, jugar y jugarTurno*/

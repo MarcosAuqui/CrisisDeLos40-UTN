@@ -21,10 +21,8 @@ void crearMazo(int mazo[], int& cantMazo){
     }
     cantMazo = TOTAL_CARTAS;
 }
-/* crearMazo: llena el vector con los id 0 a 53 en orden (la carta i queda
-en la posición i) y deja cantMazo en 54, o sea el mazo completo.
-En el proyecto la usa jugar al empezar cada partida, para tener un mazo
-nuevo con todas las cartas antes de repartir */
+/*crearMazo: llena el mazo con los ids 0 a 53 en orden y deja cantMazo en 54
+la usa jugar al empezar la partida*/
 
 void mezclar(int mazo[], int cantMazo){
     for(int i = cantMazo - 1 ; i > 0; i--){
@@ -35,33 +33,21 @@ void mezclar(int mazo[], int cantMazo){
     }
 
 }
-/*mezclar: desordena al azar las cartas que están en el mazo. Desde la última 
-posición hacia la segunda: en cada paso elige una posición al azar entre 0 e i 
-e intercambia esas dos cartas. Solo toca las posiciones 0 a cantMazo - 1, o sea 
-las cartas que realmente están en el mazo. Necesita que main llame
-a srand(time(NULL)) una sola vez al inicio del código.
-Se usa al crear el mazo y al final de cada turno (paso 6)*/
+/*mezclar: desordena las cartas del mazo, de la ultima para atras cambia cada una con
+una posicion al azar. solo toca las que estan en el mazo (0 a cantMazo-1)
+necesita el srand del main. la usan jugar al empezar y jugarTurno al final de cada turno*/
 
 // ROBAR Y DEVOLVER
 int robarCarta(int mazo[], int& cantMazo){
     cantMazo--;
     return  mazo[cantMazo];
 }
-/* robarCarta: saca la carta de arriba del mazo y devuelve su id.
-Primero baja cantMazo en 1 (la última carta deja de ser parte del
-mazo) y después devuelve esa carta. El vector no se borra: lo que queda
-fuera de cantMazo simplemente no cuenta.
-En el proyecto la usa jugar al principio de cada turno, dos veces, para
-darle al jugador activo sus dos cartas. */
+/*robarCarta: saca la carta de arriba del mazo, baja cantMazo en 1 y devuelve esa carta
+la usa jugarTurno 2 veces por turno*/
 
 void devolverCarta(int mazo[], int& cantMazo, int carta){
     mazo[cantMazo] = carta;
     cantMazo++;
 }
-/* devolverCarta: pone una carta de vuelta en el mazo.
-La escribe en la primera posición libre (mazo[cantMazo]) y después sube
-cantMazo en 1, así esa posición pasa a ser parte del mazo. Hace lo
-inverso de robarCarta. La usa jugar al final de cada turno para devolver la carta
-que no se jugó y el comodín usado. También la usan puntuarFila y las jugadas de diamante 
-y comodín cuando una carta sale del tablero. El mazo siempre se mezcla al terminar 
-el turno, así que no importa en qué posición quede cada carta */
+/*devolverCarta: pone una carta en la primera posicion libre del mazo y sube cantMazo en 1
+es lo contrario de robarCarta. la usan jugarTurno, devolverFila, jugarDiamante y comodinRetirar*/

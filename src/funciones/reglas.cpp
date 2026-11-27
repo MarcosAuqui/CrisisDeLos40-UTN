@@ -28,11 +28,9 @@ void puntuarFila(int puntaje[2], int jugador, int suma){
         puntaje[rival] += suma;
     }
 }
-/*puntuarFila: aplica a una fila completa. Con suma 30 exacto, el jugador que la
-completo suma 30 y el rival resta 15 (sin bajar de 0). De 31 a 39, el jugador suma la suma.
-Con 40 o mas (crisis de los 40) los puntos van al rival. Con menos de 30 nadie puntua.
-No imprime ni vacia la fila: eso lo va a hacer interfaz. La usa jugar despues
-de colocar una carta o de mover con comodin cuando la fila llega a 5 cartas.*/
+/*puntuarFila: reparte los puntos de una fila completa segun la suma
+30 exacto: el jugador suma 30 y el rival resta 15 (sin bajar de 0). de 31 a 39 el jugador suma la suma
+40 o mas (crisis de los 40) los puntos van al rival. menos de 30 nadie suma. la usa completarFila*/
 
 void devolverFila(int tablero[FILAS][COLUMNAS], int mazo[], int& cantMazo, int fila){
     for(int c = 0; c < COLUMNAS; c++){
@@ -42,10 +40,8 @@ void devolverFila(int tablero[FILAS][COLUMNAS], int mazo[], int& cantMazo, int f
         }
     }
 }
-/*devolverFila: devuelve al mazo todas las cartas de una fila y la deja vacia (VACIO).
-Recorre las 5 columnas y en cada casillero con una carta carta, quitarCarta la saca
-del tablero y devolverCarta la pone arriba del mazo. Se la llama despues de puntuarFila, cuando la
-fila ya se mostro y se repartieron los puntos.*/
+/*devolverFila: devuelve al mazo las cartas de una fila y la deja vacia
+usa quitarCarta y devolverCarta en cada casillero con carta. la usa completarFila despues de puntuar*/
 
 // VICTORIA
 int hayGanador(int puntaje[2]){
@@ -56,6 +52,5 @@ int hayGanador(int puntaje[2]){
     }
     return -1;
 }
-/*hayGanador: revisa si algun jugador llego a PUNTOS_VICTORIA (50) o mas. Devuelve su indice en vector
-(0 o 1) o -1 si todavia nadie gano. La usa jugar al final decada turno (paso 7): si devuelve 
-distinto de -1, la partida debera termina en ese momento.*/
+/*hayGanador: devuelve 0 o 1 si ese jugador llego a 50 puntos, o -1 si todavia nadie gano
+la usa jugar para saber cuando termina la partida*/
