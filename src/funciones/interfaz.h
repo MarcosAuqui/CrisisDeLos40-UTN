@@ -7,6 +7,7 @@
 // CONSOLA Y AUXILIARES
 void configurarConsola();
 void espacios(int n);
+void lineaCentrada(std::string texto);
 
 // DIBUJO DE CARTAS
 void mostrarCarta(int id);

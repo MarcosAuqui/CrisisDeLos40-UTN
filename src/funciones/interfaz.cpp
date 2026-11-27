@@ -5,6 +5,8 @@ configurarConsola()
 
 espacios()
 
+lineaCentrada()
+
 mostrarCarta()
 
 simboloPalo()
@@ -95,6 +97,21 @@ void espacios(int n){
 }
 /*espacios: imprime n espacios seguidos, sirve para rellenar el marco
 asi no se corre el borde derecho*/
+
+void lineaCentrada(string texto){
+    int izquierda = (116 - texto.length()) / 2;
+    int derecha = 116 - izquierda - texto.length();
+
+    cout << "|";
+    espacios(izquierda);
+    cout << texto;
+    espacios(derecha);
+    cout << "|" << endl;
+
+}
+/*lineaCentrada: imprime una linea del marco con el texto centrado
+rellena con espacios a los 2 lados para que no se corra el borden
+la usan mostrarEstadisticas y pedirnombres*/
 
 // DIBUJO DE CARTAS
 void mostrarCarta(int id){
@@ -280,48 +297,68 @@ void mostrarMenu()
 con pedirOpcion(). 
 Opciones segun enunciado: 1, 2, 3 y 0.*/
 
-void mostrarReglas()
-{
+void mostrarReglas(){
     cout << ". ------------------------------------------------------------------------------------------------------------------ ." << endl;
     cout << "|♥                                                                                                                  ♠|" << endl;
- 
-    for (int i = 0; i < 19; i++)
-    {
-        if (i == 2)
-        {
-            cout << "|                                               crisis de los cuarenta                                               |" << endl;
-        }
-        else if (i == 9)
-        {
-            cout << "|                                                                                                                    |" << endl;
-            cout << "|      Crisis de los 40 es un juego de cartas para 2 jugadores que se juega con un mazo de póker. Los jugadores      |" << endl;
-            cout << "|      colocan cartas por turnos en un tablero de 3 filas y suman puntos al completarlas. Quien coloca la quinta     |" << endl;
-            cout << "|      carta de una fila se lleva su puntaje, siempre que la suma no llegue a 40: si llega a 40 o más, los puntos    |" << endl;
-            cout << "|                                                  son para el rival.                                                |" << endl;
-        }
-        else
-        {
-            cout << "|                                                                                                                    |" << endl;
-        }
-    }
- 
-    cout << "|♣                             (apriete cualquier tecla para volver al menú principal)                              ♦|" << endl;
+    cout << "|                                               CRISIS DE LOS CUARENTA                                               |" << endl;
+    cout << "|                                                  REGLAS DEL JUEGO                                                  |" << endl;
+    cout << "|                                                                                                                    |" << endl;
+    cout << "|    OBJETIVO                                                                                                        |" << endl;
+    cout << "|    Juego para 2 jugadores. Gana el primero que llega a 50 puntos o mas, y la partida termina ahi.                  |" << endl;
+    cout << "|                                                                                                                    |" << endl;
+    cout << "|    CARTAS                                                                                                          |" << endl;
+    cout << "|    Mazo de 54 cartas: 52 de poker y 2 comodines. El tablero tiene 3 filas de 5 casilleros.                         |" << endl;
+    cout << "|    Valores: As = 1, del 2 al 10 su numero, J = 11, Q = 12 y K = 13. El comodin no tiene valor.                     |" << endl;
+    cout << "|                                                                                                                    |" << endl;
+    cout << "|    TURNO                                                                                                           |" << endl;
+    cout << "|    Se sortea quien empieza. En cada turno se roban 2 cartas y se elige una para jugar: no se puede pasar.          |" << endl;
+    cout << "|    La carta que no se juega vuelve al mazo, y el mazo se mezcla al terminar el turno.                              |" << endl;
+    cout << "|    Si se roban los 2 comodines con el tablero vacio, se pierde el turno.                                           |" << endl;
+    cout << "|                                                                                                                    |" << endl;
+    cout << "|    JUGADAS                                                                                                         |" << endl;
+    cout << "|    Picas, corazones y treboles: se colocan en el primer casillero libre de la fila elegida.                        |" << endl;
+    cout << "|    Diamantes: se colocan igual, o reemplazan cualquier carta del tablero (la reemplazada vuelve al mazo).          |" << endl;
+    cout << "|    Comodin (solo si hay cartas en el tablero): intercambiar dos cartas, mover una carta a otra fila                |" << endl;
+    cout << "|    o retirar una carta. Despues de usarlo, el comodin vuelve al mazo.                                              |" << endl;
+    cout << "|                                                                                                                    |" << endl;
+    cout << "|    FILA COMPLETA (se coloca la quinta carta, o se mueve con el comodin)                                            |" << endl;
+    cout << "|    Suma menor a 30: nadie suma puntos.                                                                             |" << endl;
+    cout << "|    Suma 30 exacto: quien la completa suma 30 y el rival resta 15 (el puntaje nunca baja de 0).                     |" << endl;
+    cout << "|    Suma de 31 a 39: quien la completa suma esos puntos.                                                            |" << endl;
+    cout << "|    Suma 40 o mas, CRISIS DE LOS 40: los puntos son para el rival.                                                  |" << endl;
+    cout << "|    Despues, las 5 cartas vuelven al mazo. Reemplazar, intercambiar o retirar nunca completan una fila.             |" << endl;
+    cout << "|                                                                                                                    |" << endl;
+    cout << "|♣                             (apriete cualquier tecla para volver al menu principal)                              ♦|" << endl;
     cout << ". ------------------------------------------------------------------------------------------------------------------ ." << endl;
 }
-
-/*mostrarReglas: texto del reglamento dentro del marco verde.
-Se llama desde la opcion 3 del menu. Solo dibuja: la espera de la tecla la hace quien la llama. */
+/*mostrarReglas: muestra el reglamento dentro del marco: objetivo, cartas, turno, jugadas y puntaje de la fila completa.
+la usa main en la opcion 3*/
 
 void mostrarEstadisticas(string mejorNombre, int mejorPuntaje){
-    cout << "ESTADISTICAS" << endl;
+    cout << ". ------------------------------------------------------------------------------------------------------------------ ." << endl;
+    cout << "|♥                                                                                                                  ♠|" << endl;
+    lineaCentrada("CRISIS DE LOS CUARENTA");
+    lineaCentrada("");
+    lineaCentrada("ESTADISTICAS");
+    lineaCentrada("");
+    lineaCentrada("");
+
     if(mejorPuntaje == 0){
-        cout << "Todavia no se jugo ninguna partida." << endl;
+        lineaCentrada("Necesitas ganar al menos una vez para mostrar las estadisticas.");
     }else{
-        cout << "Mejor jugador: " << mejorNombre << " con " << mejorPuntaje << " puntos." << endl;
+        lineaCentrada("MAYOR PUNTUACION");
+        lineaCentrada("");
+        lineaCentrada("Jugador: " + mejorNombre);
+        lineaCentrada("Puntuacion: " + to_string(mejorPuntaje));
     }
+
+    lineaCentrada("");
+    lineaCentrada("");
+    cout << "|♣                             (apriete cualquier tecla para volver al menu principal)                              ♦|" << endl;
+    cout << ". ------------------------------------------------------------------------------------------------------------------ ." << endl;
 }
-/*mostrarEstadisticas: muestra el mejor jugador y su puntaje, si es 0 todavia no se jugo
-(provisoria hasta que santi pase la suya con el marco). la usa main en la opcion 2*/
+/*mostrarEstadisticas: muestra el mejor jugador y su puntaje dentro del marco
+si el puntaje es 0 es que todavia no se jugo ninguna partida. la usa main en la opcion 2*/
 
 // PANTALLA DEL TURNO
 void lineaJugador(string nombre, int puntos, bool activo)
@@ -434,21 +471,33 @@ con > en el que juega y las 3 filas del tablero. la usa jugarTurno*/
 
 // INICIO DE PARTIDA
 void pedirNombres(string nombres[2]){
+    cout << ". ------------------------------------------------------------------------------------------------------------------ ." << endl;
+    cout << "|♥                                                                                                                  ♠|" << endl;
+    lineaCentrada("CRISIS DE LOS CUARENTA");
+    lineaCentrada("");
+    lineaCentrada("REGISTRO DE JUGADORES");
+    lineaCentrada("");
+    lineaCentrada("Maximo " + to_string(LARGO_MAX_NOMBRE) + " letras por nombre");
+    lineaCentrada("");
+    cout << "|♣                                                                                                                  ♦|" << endl;
+    cout << ". ------------------------------------------------------------------------------------------------------------------ ." << endl;
+
     for(int i = 0; i < 2; i++){
-        cout << "Ingrese nombre del jugador " << i+1 << " (maximo " << LARGO_MAX_NOMBRE << " letras) : ";
+        cout << "Nombre del jugador " << i + 1 << ": ";
         cin >> nombres[i];
-    
+
         while(nombres[i].length() > LARGO_MAX_NOMBRE){
-            cout << "Nombre demasiado largo. Ingrese uno de hasta " << LARGO_MAX_NOMBRE << " letras: ";
+            cout << "Nombre demasiado largo. Intente nuevamente: ";
             cin >> nombres[i];
         }
     }
-
+    cout << ". ------------------------------------------------------------------------------------------------------------------ ." << endl;
+    lineaCentrada("QUE COMIENCE LA PARTIDA");
+    cout << ". ------------------------------------------------------------------------------------------------------------------ ." << endl;
 }
-/*pedirNombres: pide el nombre de los 2 jugadores y los guarda en  nombnres[]
-se repite si el nombre pasa del largo maximo de nombres, que es 15, para no romper
-el formato del tablero.
-La Llamara jugar() al empezar partida*/
+/*pedirNombres: dibuja el marco de registro y abajo pide el nombre de los 2 jugadores
+si el nombre pasa del largo maximo (15) lo vuelve a pedir, para no romper el tablero.
+la usa jugar al empezar la partida*/
 
 // TURNO
 void mostrarCartasRobadas(string nombre, int carta1, int carta2){
